@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Item Database</title>
+<style>
+:root{
+  --bg0:#060914;
+  --bg1:#0A1022;
+  --border:rgba(255,255,255,.08);
+  --text:#E7EAF2;
+  --muted:#A8B1C2;
+  --muted2:#7F8AA1;
+  --shadow: 0 18px 60px rgba(0,0,0,.45);
+  --shadow2: 0 12px 40px rgba(0,0,0,.35);
+  --radius: 18px;
+
+  /* rarity colors */
+  --r-common: rgba(148,163,184,.95);
+  --r-uncommon: rgba(34,197,94,.95);
+  --r-rare: rgba(59,130,246,.95);
+  --r-epic: rgba(168,85,247,.95);
+  --r-legendary: rgba(245,158,11,.98);
+  --r-divine: rgba(246,196,83,.98);
+  --r-mythic: rgba(236,72,153,.98);
+  --r-unique: rgba(6,182,212,.98);
+  --r-unknown: rgba(148,163,184,.7);
+}
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 900px at 12% 8%, rgba(56,189,248,.14), transparent 62%),
+    radial-gradient(1000px 760px at 84% 16%, rgba(168,85,247,.12), transparent 58%),
+    radial-gradient(1100px 860px at 70% 80%, rgba(245,158,11,.08), transparent 62%),
+    linear-gradient(180deg, var(--bg0), var(--bg1));
+  overflow: hidden;
+}
+
+/* Background sheen (no grid overlay) */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events:none;
+  background:
+    radial-gradient(1400px 900px at 20% 10%, rgba(255,255,255,.03), transparent 60%),
+    radial-gradient(1200px 800px at 80% 30%, rgba(255,255,255,.02), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.02), transparent 18%, rgba(0,0,0,.10));
+  mix-blend-mode: screen;
+  opacity: .9;
+}
+
+header{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 16px 22px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(180deg, rgba(16,26,49,.92), rgba(11,16,32,.82));
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 40px rgba(0,0,0,.35);
+}
+
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 14px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  font-weight: 750;
+  letter-spacing: .2px;
+  font-size: 18px;
+}
+
+.badge{
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: rgba(231,234,242,.92);
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.035);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+main{
+  display:grid;
+  grid-template-columns: 360px 1fr;
+  min-height: calc(100vh - 60px);
+  height: calc(100vh - 60px);
+}
+
+aside{
+  border-right: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(180deg, rgba(16,26,49,.55), rgba(11,16,32,.4));
+  padding: 14px;
+  overflow: auto;
+}
+
+section{
+  padding: 24px;
+  overflow: auto;
+}
+
+.panel{
+  border: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(180deg, rgba(14,20,38,.75), rgba(11,16,32,.55));
+  border-radius: var(--radius);
+  box-shadow: var(--shadow2);
+  overflow: hidden;
+  position: relative;
+}
+.panel::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: var(--radius);
+  pointer-events:none;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.06), 0 18px 60px rgba(0,0,0,.30);
+}
+
+.sidebar-top{
+  padding: 14px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.search{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+}
+.search input{
+  width:100%;
+  border:none;
+  outline:none;
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+}
+.search input::placeholder{ color: var(--muted2); }
+
+.hint{
+  margin-top: 10px;
+  color: rgba(168,177,194,.85);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.sidebar-scroll{ padding: 10px; }
+
+.group{ margin: 6px 0; }
+
+.group-title{
+  width: 100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  padding: 12px 12px;
+  border-radius: 16px;
+  cursor: pointer;
+  user-select:none;
+  color: rgba(231,234,242,.95);
+  border: 1px solid rgba(255,255,255,.06);
+  background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+  transition: transform .12s ease, background .15s ease, border-color .15s ease;
+}
+.group-title:hover{
+  transform: translateY(-1px);
+  background:
+    radial-gradient(520px 140px at 20% 0%, rgba(56,189,248,.16), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  border-color: rgba(56,189,248,.18);
+}
+
+.group-title .label{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.group-ico{
+  width: 28px;
+  height: 28px;
+  border-radius: 12px;
+  display:grid;
+  place-items:center;
+  flex: 0 0 auto;
+  border: 1px solid rgba(255,255,255,.10);
+  background:
+    radial-gradient(22px 22px at 35% 30%, rgba(56,189,248,.22), transparent 70%),
+    radial-gradient(18px 18px at 70% 65%, rgba(168,85,247,.18), transparent 75%),
+    rgba(255,255,255,.03);
+  box-shadow: 0 12px 28px rgba(0,0,0,.28);
+  position: relative;
+  overflow: hidden;
+}
+.group-ico::after{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: 12px;
+  pointer-events:none;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.06), 0 0 18px rgba(56,189,248,.10);
+  opacity: .9;
+}
+.group-ico svg{ width: 16px; height: 16px; opacity: .95; }
+
+/* per-tab tint */
+.group-ico.g-admin{ background: radial-gradient(22px 22px at 35% 30%, rgba(239,68,68,.22), transparent 70%), radial-gradient(18px 18px at 70% 65%, rgba(245,158,11,.18), transparent 75%), rgba(255,255,255,.03); }
+.group-ico.g-armor{ background: radial-gradient(22px 22px at 35% 30%, rgba(59,130,246,.22), transparent 70%), radial-gradient(18px 18px at 70% 65%, rgba(148,163,184,.16), transparent 75%), rgba(255,255,255,.03); }
+.group-ico.g-charms{ background: radial-gradient(22px 22px at 35% 30%, rgba(168,85,247,.22), transparent 70%), radial-gradient(18px 18px at 70% 65%, rgba(6,182,212,.18), transparent 75%), rgba(255,255,255,.03); }
+.group-ico.g-crates{ background: radial-gradient(22px 22px at 35% 30%, rgba(245,158,11,.22), transparent 70%), radial-gradient(18px 18px at 70% 65%, rgba(34,197,94,.16), transparent 75%), rgba(255,255,255,.03); }
+.group-ico.g-decoration{ background: radial-gradient(22px 22px at 35% 30%, rgba(236,72,153,.22), transparent 70%), radial-gradient(18px 18px at 70% 65%, rgba(168,85,247,.16), transparent 75%), rgba(255,255,255,.03); }
+.group-ico.g-food{ background: radial-gradient(22px 22px at 35% 30%, rgba(34,197,94,.22), transparent 70%), radial-gradient(18px 18px at 70% 65%, rgba(245,158,11,.16), transparent 75%), rgba(255,255,255,.03); }
+.group-ico.g-gamepass{ background: radial-gradient(22px 22px at 35% 30%, rgba(6,182,212,.22), transparent 70%), radial-gradient(18px 18px at 70% 65%, rgba(59,130,246,.16), transparent 75%), rgba(255,255,255,.03); }
+.group-ico.g-mojo{ background: radial-gradient(22px 22px at 35% 30%, rgba(245,158,11,.22), transparent 70%), radial-gradient(18px 18px at 70% 65%, rgba(239,68,68,.16), transparent 75%), rgba(255,255,255,.03); }
+.group-ico.g-mounts{ background: radial-gradient(22px 22px at 35% 30%, rgba(59,130,246,.22), transparent 70%), radial-gradient(18px 18px at 70% 65%, rgba(6,182,212,.16), transparent 75%), rgba(255,255,255,.03); }
+.group-ico.g-potions{ background: radial-gradient(22px 22px at 35% 30%, rgba(168,85,247,.22), transparent 70%), radial-gradient(18px 18px at 70% 65%, rgba(236,72,153,.16), transparent 75%), rgba(255,255,255,.03); }
+.group-ico.g-spells{ background: radial-gradient(22px 22px at 35% 30%, rgba(6,182,212,.22), transparent 70%), radial-gradient(18px 18px at 70% 65%, rgba(168,85,247,.16), transparent 75%), rgba(255,255,255,.03); }
+.group-ico.g-tools{ background: radial-gradient(22px 22px at 35% 30%, rgba(148,163,184,.22), transparent 70%), radial-gradient(18px 18px at 70% 65%, rgba(59,130,246,.16), transparent 75%), rgba(255,255,255,.03); }
+.group-ico.g-skilltree{ background: radial-gradient(22px 22px at 35% 30%, rgba(34,197,94,.20), transparent 70%), radial-gradient(18px 18px at 70% 65%, rgba(6,182,212,.16), transparent 75%), rgba(255,255,255,.03); }
+
+.count-pill{
+  margin-left:auto;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  color: rgba(231,234,242,.92);
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.035);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+.chev{
+  width: 28px;
+  height: 28px;
+  display:grid;
+  place-items:center;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.06);
+  background: rgba(255,255,255,.03);
+}
+.group.open .chev{
+  border-color: rgba(56,189,248,.28);
+  background: rgba(56,189,248,.10);
+}
+
+.group-content{
+  display:none;
+  margin: 10px 0 14px 10px;
+  padding-left: 10px;
+  border-left: 1px solid rgba(255,255,255,.08);
+}
+.group.open .group-content{ display:block; }
+
+.subgroup{ margin: 8px 0; }
+
+.subgroup-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 14px;
+  cursor: pointer;
+  user-select:none;
+  color: rgba(231,234,242,.9);
+  background: rgba(255,255,255,.02);
+  border: 1px solid rgba(255,255,255,.06);
+}
+.subgroup-title:hover{
+  background: rgba(255,255,255,.04);
+  border-color: rgba(255,255,255,.10);
+}
+.subgroup .item-list{ display:none; padding: 8px 0 0 10px; }
+.subgroup.open .item-list{ display:block; }
+
+.item{
+  position: relative;
+  padding: 8px 10px;
+  border-radius: 12px;
+  cursor:pointer;
+  color: rgba(168,177,194,.92);
+  border: 1px solid transparent;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+.item::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius: 12px;
+  pointer-events:none;
+  opacity: 0;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.06), 0 10px 24px rgba(0,0,0,.25);
+  transition: opacity .15s ease;
+}
+.item:hover{
+  background: rgba(255,255,255,.05);
+  color: rgba(231,234,242,.95);
+  border-color: rgba(255,255,255,.06);
+}
+.item:hover::before{ opacity: 1; }
+.item.active{
+  background: linear-gradient(180deg, rgba(56,189,248,.16), rgba(56,189,248,.08));
+  color: #fff;
+  border-color: rgba(56,189,248,.28);
+}
+
+.item-name{
+  min-width: 0;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.r-dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  flex: 0 0 auto;
+  background: var(--r-unknown);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.10), 0 0 16px rgba(255,255,255,.06);
+}
+.r-dot[data-r="common"]{ background: var(--r-common); box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 0 18px rgba(148,163,184,.20); }
+.r-dot[data-r="uncommon"]{ background: var(--r-uncommon); box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 0 18px rgba(34,197,94,.22); }
+.r-dot[data-r="rare"]{ background: var(--r-rare); box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 0 18px rgba(59,130,246,.22); }
+.r-dot[data-r="epic"]{ background: var(--r-epic); box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 0 18px rgba(168,85,247,.22); }
+.r-dot[data-r="legendary"]{ background: var(--r-legendary); box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 0 20px rgba(245,158,11,.22); }
+.r-dot[data-r="divine"]{ background: var(--r-divine); box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 0 20px rgba(246,196,83,.22); }
+.r-dot[data-r="mythic"]{ background: var(--r-mythic); box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 0 20px rgba(236,72,153,.22); }
+.r-dot[data-r="unique"]{ background: var(--r-unique); box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 0 20px rgba(6,182,212,.22); }
+
+/* Card */
+@keyframes cardIn{
+  from{ opacity: 0; transform: translateY(10px); filter: blur(2px); }
+  to{ opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes shimmer{
+  0%{ transform: translateX(-30%) rotate(12deg); opacity: .0; }
+  20%{ opacity: .55; }
+  60%{ opacity: .20; }
+  100%{ transform: translateX(130%) rotate(12deg); opacity: 0; }
+}
+
+.card{
+  max-width: 1180px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  background: linear-gradient(180deg, rgba(16,26,49,.75), rgba(11,16,32,.58));
+  overflow: hidden;
+  position: relative;
+  animation: cardIn .22s ease-out;
+
+  /* rarity defaults */
+  --rarityA: rgba(56,189,248,.18);
+  --rarityB: rgba(168,85,247,.12);
+  --rarityEdge: rgba(56,189,248,.26);
+  --rarityGlow: rgba(56,189,248,.14);
+}
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: 22px;
+  pointer-events:none;
+  box-shadow: 0 0 0 1px var(--rarityEdge), 0 18px 54px rgba(0,0,0,.48);
+  opacity: .95;
+}
+.card::after{
+  content:"";
+  position:absolute;
+  top:-35%;
+  left:-60%;
+  width: 70%;
+  height: 170%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent);
+  filter: blur(0.3px);
+  pointer-events:none;
+  transform: rotate(12deg);
+  opacity: 0;
+}
+.card:hover::after{
+  animation: shimmer 1.5s ease-in-out;
+}
+
+.card[data-rarity="common"]{ --rarityA: rgba(148,163,184,.18); --rarityB: rgba(148,163,184,.10); --rarityEdge: rgba(148,163,184,.22); --rarityGlow: rgba(148,163,184,.10); }
+.card[data-rarity="uncommon"]{ --rarityA: rgba(34,197,94,.18); --rarityB: rgba(34,197,94,.10); --rarityEdge: rgba(34,197,94,.24); --rarityGlow: rgba(34,197,94,.12); }
+.card[data-rarity="rare"]{ --rarityA: rgba(59,130,246,.20); --rarityB: rgba(59,130,246,.10); --rarityEdge: rgba(59,130,246,.28); --rarityGlow: rgba(59,130,246,.14); }
+.card[data-rarity="epic"]{ --rarityA: rgba(168,85,247,.22); --rarityB: rgba(168,85,247,.12); --rarityEdge: rgba(168,85,247,.30); --rarityGlow: rgba(168,85,247,.14); }
+.card[data-rarity="legendary"]{ --rarityA: rgba(245,158,11,.24); --rarityB: rgba(245,158,11,.12); --rarityEdge: rgba(245,158,11,.32); --rarityGlow: rgba(245,158,11,.16); }
+.card[data-rarity="divine"]{ --rarityA: rgba(246,196,83,.26); --rarityB: rgba(245,243,167,.12); --rarityEdge: rgba(246,196,83,.34); --rarityGlow: rgba(246,196,83,.18); }
+.card[data-rarity="mythic"]{ --rarityA: rgba(236,72,153,.24); --rarityB: rgba(236,72,153,.12); --rarityEdge: rgba(236,72,153,.32); --rarityGlow: rgba(236,72,153,.16); }
+.card[data-rarity="unique"]{ --rarityA: rgba(6,182,212,.24); --rarityB: rgba(168,85,247,.12); --rarityEdge: rgba(6,182,212,.32); --rarityGlow: rgba(6,182,212,.16); }
+
+.card-header{
+  display:flex;
+  gap: 18px;
+  padding: 18px 18px 14px 18px;
+  align-items:center;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  background:
+    radial-gradient(900px 220px at 20% 0%, var(--rarityA), transparent 60%),
+    radial-gradient(800px 280px at 90% 30%, var(--rarityB), transparent 55%),
+    linear-gradient(180deg, rgba(14,20,38,.62), rgba(11,16,32,.35));
+  box-shadow: inset 0 -1px 0 rgba(255,255,255,.06);
+  position: relative;
+}
+.card-header::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0, rgba(255,255,255,.05) 1px, transparent 1px, transparent 10px);
+  opacity: .06;
+  mask-image: radial-gradient(520px 240px at 20% 10%, black, transparent 70%);
+}
+
+.thumb{
+  width: 92px;
+  height: 92px;
+  border-radius: 20px;
+  overflow:hidden;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  display:grid;
+  place-items:center;
+  flex: 0 0 auto;
+  position: relative;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 10px 24px rgba(0,0,0,.35);
+}
+.thumb::after{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: 20px;
+  pointer-events:none;
+  box-shadow: 0 0 0 1px var(--rarityEdge), 0 0 28px var(--rarityGlow);
+  opacity: .75;
+}
+.thumb img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.thumb .loading{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  color: rgba(231,234,242,.72);
+  font-size: 12px;
+}
+.thumb .noimg{
+  color: rgba(231,234,242,.65);
+  font-size: 12px;
+}
+
+.title-wrap{ min-width: 0; }
+.h1{ margin: 0; font-size: 26px; font-weight: 800; letter-spacing: .2px; line-height: 1.1; }
+.subtitle{ margin-top: 6px; color: rgba(168,177,194,.92); font-size: 13px; }
+.pills{ margin-top: 10px; display:flex; flex-wrap: wrap; gap: 8px; }
+.pill{
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: .02em;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
+  color: rgba(231,234,242,.92);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.12);
+}
+.pill.rarity{
+  border-color: var(--rarityEdge);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.12), 0 0 18px var(--rarityGlow);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+}
+.pill.tool{ opacity: .95; }
+
+.card-body{ padding: 18px; }
+
+.detail-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 12px;
+}
+
+.section-card{
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,.25);
+  transition: transform .12s ease, border-color .12s ease, background .12s ease;
+}
+.section-card:hover{
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,.12);
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+}
+
+.section-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  background:
+    radial-gradient(700px 120px at 30% 0%, rgba(56,189,248,.10), transparent 60%),
+    rgba(0,0,0,.12);
+}
+.section-title{
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(168,177,194,.95);
+  font-weight: 700;
+}
+.section-body{ padding: 10px 12px 12px 12px; }
+
+.table{
+  width:100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow:hidden;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px;
+  background: rgba(0,0,0,.14);
+}
+.table th, .table td{
+  padding: 10px 10px;
+  font-size: 13px;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.table th{
+  text-align:left;
+  color: rgba(168,177,194,.95);
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,.03);
+}
+.table tr:last-child td{ border-bottom: none; }
+.table tbody tr:hover td{ background: rgba(255,255,255,.02); }
+
+.table td.key{
+  color: rgba(168,177,194,.95);
+  width: 42%;
+  font-size: 12px;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+}
+.table td.val{
+  color: rgba(231,234,242,.96);
+  font-variant-numeric: tabular-nums;
+}
+
+.mono{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 12px;
+}
+.codebox{
+  margin-top: 8px;
+  padding: 10px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(0,0,0,.16);
+  overflow:auto;
+  color: rgba(231,234,242,.92);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.placeholder{
+  display:flex;
+  align-items:center;
+  gap: 14px;
+  color: rgba(168,177,194,.92);
+  border: 1px dashed rgba(255,255,255,.16);
+  border-radius: 18px;
+  padding: 18px;
+  max-width: 1100px;
+  background: rgba(255,255,255,.02);
+}
+.placeholder::before{
+  content:"";
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  background:
+    radial-gradient(18px 18px at 30% 30%, rgba(56,189,248,.22), transparent 70%),
+    radial-gradient(18px 18px at 70% 60%, rgba(168,85,247,.18), transparent 70%),
+    rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+}
+
+@media (max-width: 980px){
+  body{ overflow:auto; }
+  main{ grid-template-columns: 1fr; height:auto; }
+  aside{ border-right: none; border-bottom: 1px solid rgba(255,255,255,.08); }
+}
+
+/* Scrollbars */
+aside::-webkit-scrollbar, section::-webkit-scrollbar{ width: 10px; }
+aside::-webkit-scrollbar-thumb, section::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.10);
+  border-radius: 999px;
+  border: 2px solid rgba(0,0,0,.20);
+}
+aside::-webkit-scrollbar-thumb:hover, section::-webkit-scrollbar-thumb:hover{ background: rgba(255,255,255,.16); }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      Item Database
+      <span class="badge" id="counts">Loading…</span>
+    </div>
+    <div class="badge">GitHub Pages-ready</div>
+  </div>
+</header>
+
+<main>
+  <aside>
+    <div class="panel">
+      <div class="sidebar-top">
+        <div class="search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="currentColor" stroke-width="2" opacity=".9"/>
+            <path d="M16.5 16.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".9"/>
+          </svg>
+          <input id="search" type="text" aria-label="Search items" placeholder="Search items (name, category, subgroup)..." />
+        </div>
+        <div class="hint">Tip: search auto-expands and jumps to the first match.</div>
+      </div>
+      <div class="sidebar-scroll" id="sidebar"></div>
+    </div>
+  </aside>
+
+  <section id="content">
+    <div class="placeholder">
+      <div>
+        <div style="font-weight:800; color: rgba(231,234,242,.96);">Select an item</div>
+        <div style="margin-top:4px; color: rgba(168,177,194,.9); font-size: 13px;">Use the sidebar or search to jump straight to an item.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+function titleCase(s){
+  const raw = String(s || '').replace(/_/g,' ').trim();
+  const lowered = raw.toLowerCase();
+  if (lowered === 'skilltree') return 'Skill Tree';
+  if (lowered === 'gamepass') return 'Gamepass';
+  return raw.replace(/\b\w/g, m => m.toUpperCase());
+}
+function humanizeKey(key){
+  let k = String(key);
+  const m = k.match(/^\[\s*["'](.+?)["']\s*\]$/);
+  if (m) k = m[1];
+  k = k.replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/_/g, ' ').trim();
+  if (!k) return '';
+  if (k == k.toUpperCase()) k = k.toLowerCase();
+  return k.replace(/\b\w/g, ch => ch.toUpperCase());
+}
+function normalizeRarity(r){
+  if (r === null || r === undefined) return 'unknown';
+  const t = String(r).trim().toLowerCase();
+  if (!t) return 'unknown';
+  // IMPORTANT: "uncommon" contains "common", so check uncommon first.
+  if (t.includes('uncommon')) return 'uncommon';
+  if (t.includes('common')) return 'common';
+  if (t.includes('rare')) return 'rare';
+  if (t.includes('epic')) return 'epic';
+  if (t.includes('legend')) return 'legendary';
+  if (t.includes('divine')) return 'divine';
+  if (t.includes('myth')) return 'mythic';
+  if (t.includes('unique')) return 'unique';
+  return 'unknown';
+}
+function normalizeCategory(path){
+  const parts = String(path).split('/');
+  const groupRaw = (parts[0] || 'misc').replace(/\.lua$/i,'');
+  const group = groupRaw.toLowerCase();
+  const subRaw = (parts[1] || '').replace(/\.lua$/i,'');
+  return { group: group || 'misc', sub: subRaw || 'misc' };
+}
+function isPlainObject(v){
+  return v && typeof v === 'object' && !Array.isArray(v);
+}
+function formatScalar(v){
+  if (v === null) return '∞';
+  if (typeof v === 'boolean') return v ? 'true' : 'false';
+  return String(v);
+}
+function extractAssetId(imageField){
+  if (imageField === null || imageField === undefined) return null;
+  if (typeof imageField === 'number' && Number.isFinite(imageField)) return String(Math.trunc(imageField));
+  const s = String(imageField);
+
+  const m1 = s.match(/rbxassetid:\/\/(\d+)/i);
+  if (m1) return m1[1];
+
+  const m2 = s.match(/[?&]assetId=(\d+)/i);
+  if (m2) return m2[1];
+
+  const m3 = s.match(/[?&]aid=(\d+)/i);
+  if (m3) return m3[1];
+
+  const m4 = s.match(/\b(\d{6,})\b/);
+  if (m4) return m4[1];
+
+  return null;
+}
+function extractImageUrl(imageField){
+  if (imageField === null || imageField === undefined) return null;
+  if (typeof imageField === 'object' && !Array.isArray(imageField)){
+    const u = imageField.imageUrl || imageField.url || imageField.thumbnailUrl;
+    if (typeof u === 'string' && /^https?:\/\//i.test(u.trim())) return u.trim();
+  }
+  if (typeof imageField !== 'string') return null;
+  const t = imageField.trim();
+  if (!t) return null;
+  if (/^\/\//.test(t)) return 'https:' + t;
+  if (/^https?:\/\//i.test(t)) return t;
+  return null;
+}
+function thumbApiUrl(assetId, size){
+  const params = new URLSearchParams({
+    assetIds: String(assetId),
+    returnPolicy: "PlaceHolder",
+    size: size,
+    format: "Png",
+    isCircular: "false"
+  });
+  return `https://thumbnails.roblox.com/v1/assets?${params.toString()}`;
+}
+const thumbCache = new Map(); // assetId -> Promise<string|null>
+async function getThumbnailUrl(assetId, preferredSize){
+  if (!assetId) return null;
+  if (thumbCache.has(assetId)) return thumbCache.get(assetId);
+
+  const p = (async () => {
+    const sizesToTry = [preferredSize, "420x420", "150x150", "110x110", "48x48", "30x30"]
+      .filter((v, i, a) => v && a.indexOf(v) === i);
+    for (const size of sizesToTry){
+      try{
+        const res = await fetch(thumbApiUrl(assetId, size), { method: "GET" });
+        if (!res.ok) continue;
+        const js = await res.json();
+        const entry = js && js.data && js.data[0];
+        if (entry && entry.imageUrl) return entry.imageUrl;
+      } catch (e) {}
+    }
+    return null;
+  })();
+
+  thumbCache.set(assetId, p);
+  return p;
+}
+
+/* Category icons */
+function iconSvg(name){
+  const n = String(name || '').toLowerCase();
+  const base = (path) => `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="${path}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".92"/></svg>`;
+  if (n === 'admin') return base("M12 2l7 4v6c0 5-3 9-7 10C8 21 5 17 5 12V6l7-4Z");
+  if (n === 'armor') return base("M12 2l8 4v6c0 5-4 9-8 10C8 21 4 17 4 12V6l8-4Z");
+  if (n === 'charms') return base("M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5Z");
+  if (n === 'crates') return base("M4 7l8-4 8 4v10l-8 4-8-4V7Zm8-4v18M4 12h16");
+  if (n === 'decoration') return base("M4 20l6-6M7 17l-3 3m5-10 7-7 3 3-7 7-3-3Z");
+  if (n === 'food') return base("M7 3v9M10 3v9M7 8h3M14 3v9c0 2 1 3 3 3v6");
+  if (n === 'gamepass') return base("M4 10a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-4Zm6-3v10");
+  if (n === 'mojo') return base("M12 2c2 4 5 6 5 10a5 5 0 0 1-10 0c0-4 3-6 5-10Z");
+  if (n === 'mounts') return base("M6 16c2-1 4-3 6-3s4 2 6 3v4H6v-4Zm1-7c0 3 2 4 5 4s5-1 5-4-2-5-5-5-5 2-5 5Z");
+  if (n === 'potions') return base("M10 2h4M10 2v3l-2 2v4a4 4 0 0 0 8 0V7l-2-2V2");
+  if (n === 'spells') return base("M4 20l10-10M14 4l6 6M9 7l8 8");
+  if (n === 'tools') return base("M14 7l3-3 3 3-3 3-3-3ZM4 20l7-7");
+  if (n === 'skilltree') return base("M6 18V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v11M8 10h8M8 14h8");
+  return base("M12 3l9 7-9 11L3 10l9-7Z");
+}
+
+/* Per-item crate detection (with skill-tree exclusions) */
+function isCrate(itemName, itemData){
+  const it = itemData && (itemData.itemType || itemData.type || itemData.toolType || itemData.useType);
+  if (it && String(it).toLowerCase().replace(/\s+/g,'').includes('skilltree')) return false;
+
+  const n = String(itemName || '').toLowerCase();
+
+  // Exclude skill tree upgrades that include the word "crate" in their name
+  if (n.includes('luck multiplier') && n.includes('crate')) return false;
+
+  if (n.includes('crate')) return true;
+
+  const t1 = (itemData && (itemData.itemType || itemData.toolType || itemData.useType || itemData.type));
+  if (t1 && String(t1).toLowerCase().includes('crate')) return true;
+
+  if (itemData && (itemData.isCrate === true || itemData.Crate === true)) return true;
+  return false;
+}
+
+function extractLooseBracketMap(obj){
+  const map = {};
+  const keys = [];
+  const re = /^\[\s*["'](.+?)["']\s*\]$/;
+  for (const k of Object.keys(obj)){
+    const m = k.match(re);
+    if (m){
+      map[m[1]] = obj[k];
+      keys.push(k);
+    }
+  }
+  return { map, keys };
+}
+function coerceDamages(val){
+  if (isPlainObject(val)) return val;
+  if (typeof val === 'string'){
+    const t = val.trim();
+    if (!t) return null;
+    try{
+      const parsed = JSON.parse(t);
+      if (isPlainObject(parsed)) return parsed;
+    }catch(e){}
+    try{
+      const fixed = t.replace(/\r?\n/g,' ').replace(/'/g,'\"').replace(/,\s*}/g,'}').replace(/,\s*]/g,']');
+      const parsed2 = JSON.parse(fixed);
+      if (isPlainObject(parsed2)) return parsed2;
+    }catch(e){}
+  }
+  return null;
+}
+function coerceRecipe(val){
+  if (isPlainObject(val)) return val;
+  if (typeof val !== 'string') return null;
+  const t = val.trim();
+  if (!t) return null;
+  if (t === '{' || t === '{,' || t === '{;') return null;
+  try{
+    const parsed = JSON.parse(t);
+    if (isPlainObject(parsed)) return parsed;
+  }catch(e){}
+  try{
+    const fixed = t.replace(/\r?\n/g,' ').replace(/'/g,'\"').replace(/,\s*}/g,'}').replace(/,\s*]/g,']');
+    const parsed2 = JSON.parse(fixed);
+    if (isPlainObject(parsed2)) return parsed2;
+  }catch(e){}
+  return null;
+}
+function renderPrettyValue(v){
+  if (v === null || typeof v !== 'object'){
+    const span = document.createElement('span');
+    span.textContent = formatScalar(v);
+    return span;
+  }
+  if (Array.isArray(v)){
+    const div = document.createElement('div');
+    div.className = 'codebox mono';
+    div.textContent = JSON.stringify(v, null, 2);
+    return div;
+  }
+  const keys = Object.keys(v);
+  const shallowScalarOnly = keys.length <= 10 && keys.every(k => (v[k] === null || typeof v[k] !== 'object'));
+  if (shallowScalarOnly){
+    const innerPairs = keys.sort((a,b)=>a.localeCompare(b)).map(k => [humanizeKey(k), v[k]]);
+    const inner = document.createElement('table');
+    inner.className = 'table';
+    inner.style.borderRadius = '12px';
+    inner.style.margin = '0';
+    inner.style.width = '100%';
+    const tbody = document.createElement('tbody');
+    for (const [k, vv] of innerPairs){
+      const tr = document.createElement('tr');
+      const td1 = document.createElement('td');
+      td1.className = 'key';
+      td1.textContent = k;
+      const td2 = document.createElement('td');
+      td2.className = 'val';
+      td2.textContent = formatScalar(vv);
+      tr.appendChild(td1); tr.appendChild(td2);
+      tbody.appendChild(tr);
+    }
+    inner.appendChild(tbody);
+    return inner;
+  }
+  const div = document.createElement('div');
+  div.className = 'codebox mono';
+  const replacer = (k,val)=> (val === null ? '∞' : val);
+  div.textContent = JSON.stringify(v, replacer, 2);
+  return div;
+}
+function sectionCard(title, node){
+  const box = document.createElement('div');
+  box.className = 'section-card';
+  const head = document.createElement('div');
+  head.className = 'section-head';
+  const t = document.createElement('div');
+  t.className = 'section-title';
+  t.textContent = title;
+  head.appendChild(t);
+  const body = document.createElement('div');
+  body.className = 'section-body';
+  if (node) body.appendChild(node);
+  box.appendChild(head);
+  box.appendChild(body);
+  return box;
+}
+function tableFromPairs(pairs, headers){
+  const table = document.createElement('table');
+  table.className = 'table';
+  if (headers){
+    const thead = document.createElement('thead');
+    const tr = document.createElement('tr');
+    for (const h of headers){
+      const th = document.createElement('th');
+      th.textContent = h;
+      tr.appendChild(th);
+    }
+    thead.appendChild(tr);
+    table.appendChild(thead);
+  }
+  const tbody = document.createElement('tbody');
+  for (const [k, v] of pairs){
+    const tr = document.createElement('tr');
+    const tdK = document.createElement('td');
+    tdK.className = 'key';
+    tdK.textContent = humanizeKey(k);
+    const tdV = document.createElement('td');
+    tdV.className = 'val';
+    tdV.appendChild(renderPrettyValue(v));
+    tr.appendChild(tdK);
+    tr.appendChild(tdV);
+    tbody.appendChild(tr);
+  }
+  table.appendChild(tbody);
+  return table;
+}
+
+async function load(){
+  const sidebar = document.getElementById('sidebar');
+  const content = document.getElementById('content');
+  const search = document.getElementById('search');
+  const counts = document.getElementById('counts');
+
+  try{
+    const res = await fetch('./items.json');
+    if (!res.ok) throw new Error(`Failed to load items.json (${res.status})`);
+    const data = await res.json();
+
+  const groups = {};
+  let totalItems = 0;
+
+  // Ingest per item; assign crates/skilltree to their own groups regardless of source path
+  for (const [path, items] of Object.entries(data)){
+    const base = normalizeCategory(path);
+    for (const [itemName, itemData] of Object.entries(items)){
+      let group = base.group;
+      let sub = base.sub;
+
+      // Manual overrides
+      const nameLower = String(itemName || '').trim().toLowerCase();
+      if (nameLower === 'gold fish' || nameLower === 'prickly pear' || nameLower === 'raw fish'){
+        group = 'food';
+        sub = 'misc';
+      }
+
+      const it = itemData && (itemData.itemType || itemData.type || itemData.toolType || itemData.useType);
+      const itNorm = it ? String(it).toLowerCase().replace(/\s+/g,'') : '';
+
+      if (itNorm.includes('skilltree')){
+        group = 'skilltree';
+        sub = 'misc';
+      } else if (isCrate(itemName, itemData)){
+        group = 'crates';
+        sub = 'misc';
+      }
+
+      groups[group] ??= {};
+      groups[group][sub] ??= {};
+      groups[group][sub][itemName] = itemData;
+      totalItems++;
+    }
+  }
+
+  const groupOrder = Object.keys(groups).sort((a,b)=>a.localeCompare(b));
+  counts.textContent = `${groupOrder.length} categories • ${totalItems} items`;
+
+  const groupMeta = new Map();
+  const itemMeta = [];
+
+  function renderCard(itemName, itemData, meta){
+    content.innerHTML = '';
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    const rarityRawForTheme = itemData.Rarity || itemData.rarity;
+    card.dataset.rarity = normalizeRarity(rarityRawForTheme);
+
+    const header = document.createElement('div');
+    header.className = 'card-header';
+
+    const thumb = document.createElement('div');
+    thumb.className = 'thumb';
+
+    const loading = document.createElement('div');
+    loading.className = 'loading';
+    loading.textContent = 'Loading…';
+    thumb.appendChild(loading);
+
+    const img = document.createElement('img');
+    img.alt = itemName;
+
+    const directUrl = extractImageUrl(itemData.image);
+    const assetId = directUrl ? null : extractAssetId(itemData.image);
+
+    (async () => {
+      if (directUrl){
+        img.onload = () => { img.style.opacity = '1'; loading.remove(); };
+        img.onerror = () => { loading.remove(); thumb.appendChild(Object.assign(document.createElement('div'), {className:'noimg', textContent:'No image'})); };
+        img.src = directUrl;
+        thumb.appendChild(img);
+        return;
+      }
+
+      if (!assetId){
+        loading.remove();
+        thumb.appendChild(Object.assign(document.createElement('div'), {className:'noimg', textContent:'No image'}));
+        return;
+      }
+
+      const url = await getThumbnailUrl(assetId, '420x420');
+      if (!url){
+        loading.remove();
+        thumb.appendChild(Object.assign(document.createElement('div'), {className:'noimg', textContent:'No image'}));
+        return;
+      }
+
+      img.onload = () => { img.style.opacity = '1'; loading.remove(); };
+      img.onerror = () => { loading.remove(); thumb.appendChild(Object.assign(document.createElement('div'), {className:'noimg', textContent:'No image'})); };
+      img.src = url;
+      thumb.appendChild(img);
+    })();
+
+    const tw = document.createElement('div');
+    tw.className = 'title-wrap';
+
+    const h = document.createElement('h2');
+    h.className = 'h1';
+    h.textContent = itemName;
+
+    const subline = document.createElement('div');
+    subline.className = 'subtitle';
+    const pieces = [];
+    if (meta?.group) pieces.push(titleCase(meta.group));
+    if (meta?.sub && meta.sub !== 'misc') pieces.push(titleCase(meta.sub));
+    subline.textContent = pieces.join(' • ');
+
+    const pills = document.createElement('div');
+    pills.className = 'pills';
+
+    const rarity = itemData.Rarity || itemData.rarity;
+    const toolType = itemData.toolType || itemData.itemType || itemData.type;
+
+    function addPill(text, kind){
+      const p = document.createElement('span');
+      p.className = 'pill' + (kind ? (' ' + kind) : '');
+      p.textContent = text;
+      pills.appendChild(p);
+    }
+
+    if (toolType) addPill(String(toolType), 'tool');
+    if (rarity) addPill(String(rarity), 'rarity');
+
+    tw.appendChild(h);
+    tw.appendChild(subline);
+    if (pills.childElementCount) tw.appendChild(pills);
+
+    header.appendChild(thumb);
+    header.appendChild(tw);
+
+    const body = document.createElement('div');
+    body.className = 'card-body';
+
+    const grid = document.createElement('div');
+    grid.className = 'detail-grid';
+
+    const shown = new Set(['image']);
+    const has = (k) => Object.prototype.hasOwnProperty.call(itemData, k);
+    const loose = extractLooseBracketMap(itemData);
+
+    // Item Info
+    const infoKeys = ['itemType','toolType','useType','Rarity','rarity','level','coinValue','description','armorSet','BottomText','color','shopOrder'];
+    const infoPairs = [];
+    for (const k of infoKeys){
+      if (has(k)){
+        infoPairs.push([k, itemData[k]]);
+        shown.add(k);
+      }
+    }
+    if (infoPairs.length){
+      grid.appendChild(sectionCard('Item Info', tableFromPairs(infoPairs, ['Field','Value'])));
+    }
+
+    // Damages
+    const dmgObj = has('damages') ? coerceDamages(itemData.damages) : null;
+    if (dmgObj){
+      shown.add('damages');
+      const t = document.createElement('table');
+      t.className = 'table';
+      const thead = document.createElement('thead');
+      const trh = document.createElement('tr');
+      const th1 = document.createElement('th'); th1.textContent = 'Target';
+      const th2 = document.createElement('th'); th2.textContent = 'Damage';
+      trh.appendChild(th1); trh.appendChild(th2);
+      thead.appendChild(trh);
+      t.appendChild(thead);
+      const tbody = document.createElement('tbody');
+      const keys = Object.keys(dmgObj).sort((a,b)=>a.localeCompare(b));
+      for (const k of keys){
+        const tr = document.createElement('tr');
+        const td1 = document.createElement('td'); td1.className = 'val'; td1.textContent = humanizeKey(k);
+        const td2 = document.createElement('td'); td2.className = 'val'; td2.textContent = formatScalar(dmgObj[k]);
+        tr.appendChild(td1); tr.appendChild(td2);
+        tbody.appendChild(tr);
+      }
+      t.appendChild(tbody);
+      grid.appendChild(sectionCard('Damages', t));
+    } else if (has('damages')) {
+      shown.add('damages');
+    }
+
+    // Stats
+    const statsKeys = ['speed','FlySpeed','protection','locus','maxLoad','load','DisableDoubleResources'];
+    const statPairs = [];
+    for (const k of statsKeys){
+      if (has(k)){
+        statPairs.push([k, itemData[k]]);
+        shown.add(k);
+      }
+    }
+    if (statPairs.length){
+      grid.appendChild(sectionCard('Stats', tableFromPairs(statPairs, ['Field','Value'])));
+    }
+
+    // Crafting + Recipe
+    const craftKeys = ['craftLevel','craftQuantity','mojoRecipe','mojoCost','mojoCostPer','mojoCostPerCraft','mojoCostPerCrafting','mojoCostPerLevel'];
+    const craftPairs = [];
+    for (const k of craftKeys){
+      if (has(k)){
+        craftPairs.push([k, itemData[k]]);
+        shown.add(k);
+      }
+    }
+
+    let recipeMap = null;
+    const coercedRecipe = has('recipe') ? coerceRecipe(itemData.recipe) : null;
+    if (coercedRecipe && Object.keys(coercedRecipe).length){
+      recipeMap = coercedRecipe;
+    } else if (loose.keys.length){
+      recipeMap = loose.map;
+      for (const k of loose.keys) shown.add(k);
+    }
+    if (has('recipe')) shown.add('recipe');
+
+    if (craftPairs.length || (recipeMap && Object.keys(recipeMap).length)){
+      const wrap = document.createElement('div');
+      if (craftPairs.length){
+        wrap.appendChild(tableFromPairs(craftPairs, ['Field','Value']));
+      }
+      if (recipeMap && Object.keys(recipeMap).length){
+        const spacer = document.createElement('div');
+        spacer.style.height = craftPairs.length ? '10px' : '0px';
+        wrap.appendChild(spacer);
+
+        const t = document.createElement('table');
+        t.className = 'table';
+        const thead = document.createElement('thead');
+        const trh = document.createElement('tr');
+        const th1 = document.createElement('th'); th1.textContent = 'Ingredient';
+        const th2 = document.createElement('th'); th2.textContent = 'Amount';
+        trh.appendChild(th1); trh.appendChild(th2);
+        thead.appendChild(trh);
+        t.appendChild(thead);
+        const tbody = document.createElement('tbody');
+        const keys = Object.keys(recipeMap).sort((a,b)=>a.localeCompare(b));
+        for (const ing of keys){
+          const tr = document.createElement('tr');
+          const td1 = document.createElement('td'); td1.className = 'val'; td1.textContent = humanizeKey(ing);
+          const td2 = document.createElement('td'); td2.className = 'val'; td2.textContent = formatScalar(recipeMap[ing]);
+          tr.appendChild(td1); tr.appendChild(td2);
+          tbody.appendChild(tr);
+        }
+        t.appendChild(tbody);
+        wrap.appendChild(t);
+      }
+      grid.appendChild(sectionCard('Crafting', wrap));
+    }
+
+    // Flags
+    const flagsKeys = ['admin','noDrop','rebirthPersist','unobtainable','cosmetic'];
+    const flagPairs = [];
+    for (const k of flagsKeys){
+      if (has(k)){
+        flagPairs.push([k, itemData[k]]);
+        shown.add(k);
+      }
+    }
+    if (flagPairs.length){
+      grid.appendChild(sectionCard('Flags', tableFromPairs(flagPairs, ['Field','Value'])));
+    }
+
+    // Other
+    const remaining = Object.keys(itemData)
+      .filter(k => {
+        if (k === 'image' || k === 'damages' || k === 'recipe') return false;
+        if (shown.has(k)) return false;
+        if (/^\[\s*["'].*?["']\s*\]$/.test(k)) return false;
+        return true;
+      })
+      .sort((a,b)=>a.localeCompare(b));
+
+    if (remaining.length){
+      const pairs = remaining.map(k => [k, itemData[k]]);
+      grid.appendChild(sectionCard('Other', tableFromPairs(pairs, ['Field','Value'])));
+    }
+
+    body.appendChild(grid);
+    card.appendChild(header);
+    card.appendChild(body);
+    content.appendChild(card);
+  }
+
+  function buildUI(){
+    sidebar.innerHTML = '';
+    groupMeta.clear();
+    itemMeta.length = 0;
+
+    for (const groupName of groupOrder){
+      const groupEl = document.createElement('div');
+      groupEl.className = 'group';
+      groupEl.dataset.group = groupName;
+
+      const title = document.createElement('div');
+      title.className = 'group-title';
+
+      const label = document.createElement('div');
+      label.className = 'label';
+
+      const ico = document.createElement('div');
+      ico.className = 'group-ico g-' + groupName;
+      ico.innerHTML = iconSvg(groupName);
+
+      const left = document.createElement('div');
+      left.style.minWidth = '0';
+      left.textContent = titleCase(groupName);
+
+      const count = document.createElement('div');
+      count.className = 'count-pill';
+      count.textContent = '';
+
+      label.appendChild(ico);
+      label.appendChild(left);
+      label.appendChild(count);
+
+      const chev = document.createElement('div');
+      chev.className = 'chev';
+      chev.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/></svg>';
+
+      title.appendChild(label);
+      title.appendChild(chev);
+
+      const groupContent = document.createElement('div');
+      groupContent.className = 'group-content';
+
+      title.onclick = () => groupEl.classList.toggle('open');
+
+      const subMap = new Map();
+      let groupItemCount = 0;
+
+      const subOrder = Object.keys(groups[groupName]).sort((a,b)=>a.localeCompare(b));
+      for (const subName of subOrder){
+        const subgroupEl = document.createElement('div');
+        subgroupEl.className = 'subgroup';
+
+        const subTitle = document.createElement('div');
+        subTitle.className = 'subgroup-title';
+
+        const subLeft = document.createElement('div');
+        subLeft.textContent = (subName === 'misc') ? 'Misc' : titleCase(subName);
+
+        const subCount = document.createElement('div');
+        subCount.className = 'count-pill';
+        subCount.textContent = '';
+
+        const subChev = document.createElement('div');
+        subChev.className = 'chev';
+        subChev.style.width = '26px';
+        subChev.style.height = '26px';
+        subChev.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/></svg>';
+
+        subTitle.appendChild(subLeft);
+        subTitle.appendChild(subCount);
+        subTitle.appendChild(subChev);
+
+        const itemList = document.createElement('div');
+        itemList.className = 'item-list';
+
+        subTitle.onclick = (e) => {
+          e.stopPropagation();
+          subgroupEl.classList.toggle('open');
+        };
+
+        const items = groups[groupName][subName];
+        const itemNames = Object.keys(items).sort((a,b)=>a.localeCompare(b));
+        subCount.textContent = `${itemNames.length}`;
+        groupItemCount += itemNames.length;
+
+        for (const itemName of itemNames){
+          const itemData = items[itemName];
+          const item = document.createElement('div');
+          item.className = 'item';
+
+          const dot = document.createElement('span');
+          dot.className = 'r-dot';
+          const r = normalizeRarity(itemData.Rarity || itemData.rarity);
+          dot.dataset.r = r;
+
+          const nm = document.createElement('span');
+          nm.className = 'item-name';
+          nm.textContent = itemName;
+
+          item.appendChild(dot);
+          item.appendChild(nm);
+
+          item.onclick = () => {
+            document.querySelectorAll('.item').forEach(x=>x.classList.remove('active'));
+            item.classList.add('active');
+            renderCard(itemName, itemData, { group: groupName, sub: subName });
+          };
+
+          itemList.appendChild(item);
+
+          itemMeta.push({
+            itemEl: item,
+            subgroupEl,
+            groupEl,
+            groupName,
+            subName,
+            itemNameLower: itemName.toLowerCase(),
+            itemData
+          });
+        }
+
+        subgroupEl.appendChild(subTitle);
+        subgroupEl.appendChild(itemList);
+        groupContent.appendChild(subgroupEl);
+        subMap.set(subName, { subgroupEl, itemList });
+      }
+
+      count.textContent = `${groupItemCount}`;
+      groupEl.appendChild(title);
+      groupEl.appendChild(groupContent);
+      sidebar.appendChild(groupEl);
+      groupMeta.set(groupName, { groupEl, subMap });
+    }
+  }
+
+  function applySearch(q){
+    q = (q || '').trim().toLowerCase();
+
+    for (const gm of groupMeta.values()){
+      gm.groupEl.style.display = 'block';
+      for (const sm of gm.subMap.values()){
+        sm.subgroupEl.style.display = 'block';
+      }
+    }
+
+    if (!q){
+      for (const it of itemMeta) it.itemEl.style.display = 'flex';
+
+      for (const gm of groupMeta.values()) gm.groupEl.classList.remove('open');
+      for (const it of itemMeta) it.subgroupEl.classList.remove('open');
+
+      const firstGroup = sidebar.querySelector('.group');
+      if (firstGroup){
+        firstGroup.classList.add('open');
+        const firstSub = firstGroup.querySelector('.subgroup');
+        if (firstSub) firstSub.classList.add('open');
+      }
+      return;
+    }
+
+    const subHas = new Map();
+    let firstMatch = null;
+
+    for (const it of itemMeta){
+      const hay = `${it.itemNameLower} ${it.groupName} ${it.subName}`;
+      const match = hay.includes(q);
+      it.itemEl.style.display = match ? 'flex' : 'none';
+      if (match){
+        subHas.set(`${it.groupName}::${it.subName}`, true);
+        if (!firstMatch) firstMatch = it;
+      }
+    }
+
+    for (const [groupName, gm] of groupMeta.entries()){
+      let anyInGroup = false;
+      for (const [subName, sm] of gm.subMap.entries()){
+        const has = subHas.get(`${groupName}::${subName}`) === true;
+        sm.subgroupEl.style.display = has ? 'block' : 'none';
+        if (has){
+          anyInGroup = true;
+          gm.groupEl.classList.add('open');
+          sm.subgroupEl.classList.add('open');
+        } else {
+          sm.subgroupEl.classList.remove('open');
+        }
+      }
+      gm.groupEl.style.display = anyInGroup ? 'block' : 'none';
+      if (!anyInGroup) gm.groupEl.classList.remove('open');
+    }
+
+    if (firstMatch){
+      firstMatch.itemEl.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      firstMatch.itemEl.click();
+    }
+  }
+
+  buildUI();
+
+  const firstGroup = document.querySelector('#sidebar .group');
+  if (firstGroup){
+    firstGroup.classList.add('open');
+    const firstSub = firstGroup.querySelector('.subgroup');
+    if (firstSub) firstSub.classList.add('open');
+  }
+
+  let searchTimer = null;
+  search.addEventListener('input', (e)=>{
+    const val = e.target.value;
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(()=>applySearch(val), 120);
+  });
+  search.addEventListener('keydown', (e)=>{
+    if (e.key === 'Escape'){
+      e.target.value = '';
+      clearTimeout(searchTimer);
+      applySearch('');
+    } else if (e.key === 'Enter'){
+      clearTimeout(searchTimer);
+      applySearch(e.target.value);
+    }
+  });
+  } catch(err){
+    console.error(err);
+    if (counts) counts.textContent = 'Load failed';
+    if (sidebar) sidebar.innerHTML = '';
+    if (search){
+      search.disabled = true;
+      search.placeholder = 'Search unavailable';
+    }
+    if (content){
+      content.innerHTML = '';
+      const holder = document.createElement('div');
+      holder.className = 'placeholder';
+      const wrap = document.createElement('div');
+
+      const t1 = document.createElement('div');
+      t1.style.fontWeight = '800';
+      t1.style.color = 'rgba(231,234,242,.96)';
+      t1.textContent = 'Could not load items';
+
+      const t2 = document.createElement('div');
+      t2.style.marginTop = '4px';
+      t2.style.color = 'rgba(168,177,194,.9)';
+      t2.style.fontSize = '13px';
+      t2.textContent = String(err && err.message ? err.message : err);
+
+      wrap.appendChild(t1);
+      wrap.appendChild(t2);
+      holder.appendChild(wrap);
+      content.appendChild(holder);
+    }
+  }
+}
+
+load();
+</script>
+</body>
+</html>
