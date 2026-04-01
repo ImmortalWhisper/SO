@@ -576,11 +576,11 @@ async function renderData(data) {
   // Render each section
   renderCategorizedSection(doc, 1, 'tools', 'Tools',
     'Tools include axes, pickaxes, swords, bows, and more. Stats show damage values and speed.',
-    tools, false, getToolImageUrl, ['Admin', 'Artifact', 'Charm']);
+    tools, false, getToolImageUrl, ['Admin', 'Artifact', 'Charm', 'Wood', 'Stone', 'Iron', 'Steel', 'Adurite', 'Crystal', 'Magnetite', 'Emerald', 'Pink Diamond', 'Void', 'God']);
 
   renderCategorizedSection(doc, 2, 'armor', 'Armor Sets',
     'Armor is worn for protection. Piece variants (greaves, shoulders, etc.) are merged into their main item.',
-    armorSets, true, getArmorImageUrl);
+    armorSets, true, getArmorImageUrl, ['Wood', 'Stone', 'Iron', 'Steel', 'Adurite', 'Crystal', 'Magnetite', 'Emerald', 'Pink Diamond', 'Void', 'God']);
 
   renderFlatSection(doc, 3, 'bags', 'Bags',
     'Bags increase your inventory carrying capacity.',
