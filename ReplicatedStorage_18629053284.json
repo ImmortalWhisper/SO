@@ -1,0 +1,2482 @@
+{
+  "Armor": {
+    "Adurite": [
+      {
+        "assetId": "14525362803",
+        "name": "Adurite Chestplate",
+        "protection": 12
+      },
+      {
+        "assetId": "14525306197",
+        "name": "Adurite Greaves Left Foot",
+        "protection": 12
+      },
+      {
+        "assetId": "14525306197",
+        "name": "Adurite Greaves Left Leg",
+        "protection": 12
+      },
+      {
+        "assetId": "14525306197",
+        "name": "Adurite Greaves Right Foot",
+        "protection": 12
+      },
+      {
+        "assetId": "14525306197",
+        "name": "Adurite Greaves Right Leg",
+        "protection": 12
+      },
+      {
+        "assetId": "14525379753",
+        "name": "Adurite Helmet",
+        "protection": 12
+      },
+      {
+        "assetId": "14525362803",
+        "name": "Adurite Left Shoulder",
+        "protection": 12
+      },
+      {
+        "assetId": "14525362803",
+        "name": "Adurite Right Shoulder",
+        "protection": 12
+      }
+    ],
+    "Bag": [
+      {
+        "assetId": "14525321404",
+        "maxLoad": 350,
+        "name": "Adurite Bag"
+      },
+      {
+        "assetId": "75872680593831",
+        "maxLoad": 2000000,
+        "name": "Artist Bag"
+      },
+      {
+        "assetId": "84935653211089",
+        "maxLoad": 40000,
+        "name": "Bookshelf Bag"
+      },
+      {
+        "assetId": "14525323987",
+        "maxLoad": 500,
+        "name": "Crystal Bag"
+      },
+      {
+        "assetId": "78896678684726",
+        "maxLoad": 1000000,
+        "name": "Develop Bag"
+      },
+      {
+        "assetId": "14525317075",
+        "maxLoad": 1000,
+        "name": "Emerald Bag"
+      },
+      {
+        "assetId": "100600427086385",
+        "maxLoad": 50000,
+        "name": "Ghost Bag"
+      },
+      {
+        "assetId": "14525268565",
+        "maxLoad": 19000,
+        "name": "God Bag"
+      },
+      {
+        "assetId": "87833120171814",
+        "maxLoad": 35000,
+        "name": "Golden Banto Bag"
+      },
+      {
+        "assetId": "13602576200",
+        "name": "Hellstone Bag"
+      },
+      {
+        "assetId": "14525340131",
+        "maxLoad": 200,
+        "name": "Hide Bag"
+      },
+      {
+        "assetId": "14525338018",
+        "maxLoad": 250,
+        "name": "Iron Bag"
+      },
+      {
+        "assetId": "14525342219",
+        "maxLoad": 150,
+        "name": "Leaf Bag"
+      },
+      {
+        "assetId": "14525318684",
+        "maxLoad": 750,
+        "name": "Magnetite Bag"
+      },
+      {
+        "assetId": "112189540128244",
+        "maxLoad": inf,
+        "name": "Not The Shelly Bag"
+      },
+      {
+        "assetId": "138842944908263",
+        "name": "Phantomite Bag"
+      },
+      {
+        "assetId": "14525314317",
+        "maxLoad": 1500,
+        "name": "Pink Diamond Bag"
+      },
+      {
+        "assetId": "129957870297736",
+        "maxLoad": 45000,
+        "name": "Pumpkin Bag"
+      },
+      {
+        "assetId": "14525235133",
+        "maxLoad": 0,
+        "name": "Radio Pack"
+      },
+      {
+        "assetId": "88156875097735",
+        "maxLoad": 45000,
+        "name": "Serpent Bag"
+      },
+      {
+        "assetId": "125587355608202",
+        "maxLoad": 45000,
+        "name": "Skeleton Bag"
+      },
+      {
+        "assetId": "130343761717651",
+        "name": "Soulite Bag"
+      },
+      {
+        "assetId": "14525335383",
+        "maxLoad": 300,
+        "name": "Steel Bag"
+      },
+      {
+        "assetId": "116269706940544",
+        "maxLoad": 17000,
+        "name": "Undead Bag"
+      },
+      {
+        "assetId": "14525272009",
+        "maxLoad": 3000,
+        "name": "Void Bag"
+      },
+      {
+        "assetId": "117872861705254",
+        "maxLoad": 30000,
+        "name": "Void Banto Bag"
+      },
+      {
+        "assetId": "110473756406798",
+        "maxLoad": 45000,
+        "name": "Walrus Bag"
+      },
+      {
+        "assetId": "100329066064945",
+        "maxLoad": 45000,
+        "name": "Zombie Bag"
+      }
+    ],
+    "Crystal": [
+      {
+        "assetId": "14525364588",
+        "name": "Crystal Chestplate",
+        "protection": 14
+      },
+      {
+        "assetId": "14525381056",
+        "name": "Crystal Crown",
+        "protection": 14
+      },
+      {
+        "assetId": "14525298242",
+        "name": "Crystal Greaves Left Foot",
+        "protection": 14
+      },
+      {
+        "assetId": "14525298242",
+        "name": "Crystal Greaves Left Leg",
+        "protection": 14
+      },
+      {
+        "assetId": "14525298242",
+        "name": "Crystal Greaves Right Foot",
+        "protection": 14
+      },
+      {
+        "assetId": "14525298242",
+        "name": "Crystal Greaves Right Leg",
+        "protection": 14
+      },
+      {
+        "assetId": "14525364588",
+        "name": "Crystal Left Shoulder",
+        "protection": 14
+      },
+      {
+        "assetId": "14525364588",
+        "name": "Crystal Right Shoulder",
+        "protection": 14
+      }
+    ],
+    "Emerald": [
+      {
+        "assetId": "14525370364",
+        "name": "Emerald Chestplate",
+        "protection": 18
+      },
+      {
+        "assetId": "14525286858",
+        "name": "Emerald Greaves Left Foot",
+        "protection": 18
+      },
+      {
+        "assetId": "14525286858",
+        "name": "Emerald Greaves Left Leg",
+        "protection": 18
+      },
+      {
+        "assetId": "14525286858",
+        "name": "Emerald Greaves Right Foot",
+        "protection": 18
+      },
+      {
+        "assetId": "14525286858",
+        "name": "Emerald Greaves Right Leg",
+        "protection": 18
+      },
+      {
+        "assetId": "14525390020",
+        "name": "Emerald Helmet",
+        "protection": 18
+      },
+      {
+        "assetId": "14525370364",
+        "name": "Emerald Left Shoulder",
+        "protection": 18
+      },
+      {
+        "assetId": "14525370364",
+        "name": "Emerald Right Shoulder",
+        "protection": 18
+      }
+    ],
+    "God": [
+      {
+        "assetId": "14525244717",
+        "name": "God Chestplate",
+        "protection": 25
+      },
+      {
+        "assetId": "14525243585",
+        "name": "God Halo",
+        "protection": 25
+      },
+      {
+        "assetId": "14525244717",
+        "name": "God Left Shoulder",
+        "protection": 25
+      },
+      {
+        "assetId": "14525278875",
+        "name": "God Legs Left Foot",
+        "protection": 25
+      },
+      {
+        "assetId": "14525278875",
+        "name": "God Legs Left Leg",
+        "protection": 25
+      },
+      {
+        "assetId": "14525278875",
+        "name": "God Legs Right Foot",
+        "protection": 25
+      },
+      {
+        "assetId": "14525278875",
+        "name": "God Legs Right Leg",
+        "protection": 25
+      },
+      {
+        "assetId": "14525244717",
+        "name": "God Right Shoulder",
+        "protection": 25
+      }
+    ],
+    "Hellstone": [
+      {
+        "assetId": "13602576200",
+        "name": "Hellstone Bottom Left Leg"
+      },
+      {
+        "assetId": "13602576200",
+        "name": "Hellstone Bottom Right Leg"
+      },
+      {
+        "assetId": "14522537378",
+        "health": 100,
+        "name": "Hellstone Chestplate"
+      },
+      {
+        "assetId": "13602576200",
+        "name": "Hellstone Helmet"
+      },
+      {
+        "assetId": "13602576200",
+        "name": "Hellstone Left Arm"
+      },
+      {
+        "assetId": "13602576200",
+        "name": "Hellstone Left Leg"
+      },
+      {
+        "assetId": "13602576200",
+        "name": "Hellstone Left Shoulder"
+      },
+      {
+        "assetId": "13602576200",
+        "name": "Hellstone Lower Torso"
+      },
+      {
+        "assetId": "13602576200",
+        "name": "Hellstone Right Arm"
+      },
+      {
+        "assetId": "13602576200",
+        "name": "Hellstone Right Leg"
+      },
+      {
+        "assetId": "13602576200",
+        "name": "Hellstone Right Shoulder"
+      }
+    ],
+    "Hide": [
+      {
+        "assetId": "14525351121",
+        "name": "Hide Pants Left Foot",
+        "protection": 6
+      },
+      {
+        "assetId": "14525351121",
+        "name": "Hide Pants Left Leg",
+        "protection": 6
+      },
+      {
+        "assetId": "14525351121",
+        "name": "Hide Pants Right Foot",
+        "protection": 6
+      },
+      {
+        "assetId": "14525351121",
+        "name": "Hide Pants Right Leg",
+        "protection": 6
+      },
+      {
+        "assetId": "14525353153",
+        "name": "Hide Shirt",
+        "protection": 6
+      }
+    ],
+    "Iron": [
+      {
+        "assetId": "14525359663",
+        "name": "Iron Chestplate",
+        "protection": 8
+      },
+      {
+        "assetId": "14525310734",
+        "name": "Iron Greaves Left Foot",
+        "protection": 8
+      },
+      {
+        "assetId": "14525310734",
+        "name": "Iron Greaves Left Leg",
+        "protection": 8
+      },
+      {
+        "assetId": "14525310734",
+        "name": "Iron Greaves Right Foot",
+        "protection": 8
+      },
+      {
+        "assetId": "14525310734",
+        "name": "Iron Greaves Right Leg",
+        "protection": 8
+      },
+      {
+        "assetId": "14525374738",
+        "name": "Iron Helmet",
+        "protection": 8
+      },
+      {
+        "assetId": "14525359663",
+        "name": "Iron Left Shoulder",
+        "protection": 8
+      },
+      {
+        "assetId": "14525359663",
+        "name": "Iron Right Shoulder",
+        "protection": 8
+      }
+    ],
+    "Leaf": [
+      {
+        "assetId": "14525357473",
+        "name": "Leaf Pants Left Foot",
+        "protection": 3
+      },
+      {
+        "assetId": "14525357473",
+        "name": "Leaf Pants Left Leg",
+        "protection": 3
+      },
+      {
+        "assetId": "14525357473",
+        "name": "Leaf Pants Right Foot",
+        "protection": 3
+      },
+      {
+        "assetId": "14525357473",
+        "name": "Leaf Pants Right Leg",
+        "protection": 3
+      },
+      {
+        "assetId": "14942778388",
+        "name": "Leaf Shirt",
+        "protection": 3
+      }
+    ],
+    "Magnetite": [
+      {
+        "assetId": "14525368772",
+        "name": "Magnetite Chestplate",
+        "protection": 16
+      },
+      {
+        "assetId": "14525289260",
+        "name": "Magnetite Greaves Left Foot",
+        "protection": 16
+      },
+      {
+        "assetId": "14525289260",
+        "name": "Magnetite Greaves Left Leg",
+        "protection": 16
+      },
+      {
+        "assetId": "14525289260",
+        "name": "Magnetite Greaves Right Foot",
+        "protection": 16
+      },
+      {
+        "assetId": "14525289260",
+        "name": "Magnetite Greaves Right Leg",
+        "protection": 16
+      },
+      {
+        "assetId": "14525368772",
+        "name": "Magnetite Left Shoulder",
+        "protection": 16
+      },
+      {
+        "assetId": "14525383852",
+        "name": "Magnetite Mask",
+        "protection": 16
+      },
+      {
+        "assetId": "14525368772",
+        "name": "Magnetite Right Shoulder",
+        "protection": 16
+      }
+    ],
+    "Ossidar": [
+      {
+        "assetId": "4823036",
+        "health": 10000,
+        "name": "Ossidar Bottom Left Leg"
+      },
+      {
+        "assetId": "4823036",
+        "health": 10000,
+        "name": "Ossidar Bottom Right Leg"
+      },
+      {
+        "assetId": "4823036",
+        "health": 10000,
+        "name": "Ossidar Chestplate"
+      },
+      {
+        "assetId": "4823036",
+        "health": 10000,
+        "name": "Ossidar Helmet"
+      },
+      {
+        "assetId": "4823036",
+        "health": 10000,
+        "name": "Ossidar Left Arm"
+      },
+      {
+        "assetId": "4823036",
+        "health": 10000,
+        "name": "Ossidar Left Leg"
+      },
+      {
+        "assetId": "4823036",
+        "health": 10000,
+        "name": "Ossidar Left Shoulder"
+      },
+      {
+        "assetId": "4823036",
+        "health": 10000,
+        "name": "Ossidar Lower Torso"
+      },
+      {
+        "assetId": "4823036",
+        "health": 10000,
+        "name": "Ossidar Right Arm"
+      },
+      {
+        "assetId": "4823036",
+        "health": 10000,
+        "name": "Ossidar Right Leg"
+      },
+      {
+        "assetId": "4823036",
+        "health": 10000,
+        "name": "Ossidar Right Shoulder"
+      }
+    ],
+    "Phantomite": [
+      {
+        "assetId": "85098892305364",
+        "name": "Phantomite Bottom Left Leg"
+      },
+      {
+        "assetId": "138004002133841",
+        "name": "Phantomite Bottom Right Leg"
+      },
+      {
+        "assetId": "14522537378",
+        "health": 100,
+        "name": "Phantomite Chestplate"
+      },
+      {
+        "assetId": "83975188412264",
+        "name": "Phantomite Helmet"
+      },
+      {
+        "assetId": "114074665885853",
+        "name": "Phantomite Left Arm"
+      },
+      {
+        "assetId": "96098474346056",
+        "name": "Phantomite Left Leg"
+      },
+      {
+        "assetId": "127683320693711",
+        "name": "Phantomite Left Shoulder"
+      },
+      {
+        "assetId": "102325981745284",
+        "name": "Phantomite Lower Torso"
+      },
+      {
+        "assetId": "75618605721011",
+        "name": "Phantomite Right Arm"
+      },
+      {
+        "assetId": "111442005017517",
+        "name": "Phantomite Right Leg"
+      },
+      {
+        "assetId": "77607345660276",
+        "name": "Phantomite Right Shoulder"
+      }
+    ],
+    "Pink Diamond": [
+      {
+        "assetId": "14525372414",
+        "name": "Pink Diamond Chestplate",
+        "protection": 20
+      },
+      {
+        "assetId": "14525284287",
+        "name": "Pink Diamond Greaves Left Foot",
+        "protection": 20
+      },
+      {
+        "assetId": "14525284287",
+        "name": "Pink Diamond Greaves Left Leg",
+        "protection": 20
+      },
+      {
+        "assetId": "14525284287",
+        "name": "Pink Diamond Greaves Right Foot",
+        "protection": 20
+      },
+      {
+        "assetId": "14525284287",
+        "name": "Pink Diamond Greaves Right Leg",
+        "protection": 20
+      },
+      {
+        "assetId": "14541660332",
+        "name": "Pink Diamond Hood",
+        "protection": 20
+      },
+      {
+        "assetId": "14525372414",
+        "name": "Pink Diamond Left Shoulder",
+        "protection": 20
+      },
+      {
+        "assetId": "14525372414",
+        "name": "Pink Diamond Right Shoulder",
+        "protection": 20
+      }
+    ],
+    "Satchels": [
+      {
+        "assetId": "108480503945213",
+        "maxLoad": 2000000,
+        "name": "Administor Satchel"
+      },
+      {
+        "assetId": "106055386416647",
+        "maxLoad": 175,
+        "name": "Adurite Satchel"
+      },
+      {
+        "assetId": "98709373776622",
+        "maxLoad": 20000,
+        "name": "Amethyst Satchel"
+      },
+      {
+        "assetId": "139395438424212",
+        "maxLoad": 500000,
+        "name": "Ancient Tree Morph"
+      },
+      {
+        "assetId": "105201571742810",
+        "maxLoad": 30000,
+        "name": "Bookshelf Satchel"
+      },
+      {
+        "assetId": "93212249368599",
+        "maxLoad": 250,
+        "name": "Crystal Satchel"
+      },
+      {
+        "assetId": "97138076685247",
+        "maxLoad": 900000,
+        "name": "Develop Satchel"
+      },
+      {
+        "assetId": "134461743156046",
+        "maxLoad": inf,
+        "name": "Doodoo Satchel"
+      },
+      {
+        "assetId": "129593567179904",
+        "maxLoad": 500,
+        "name": "Emerald Satchel"
+      },
+      {
+        "assetId": "90645941072161",
+        "maxLoad": 22500,
+        "name": "Evil Satchel"
+      },
+      {
+        "assetId": "111803325452630",
+        "maxLoad": 32500,
+        "name": "Ghost Satchel"
+      },
+      {
+        "assetId": "72412169596251",
+        "maxLoad": 3000,
+        "name": "God Satchel"
+      },
+      {
+        "assetId": "4823036",
+        "health": 200,
+        "name": "Golden Banto Satchel"
+      },
+      {
+        "assetId": "13602576200",
+        "name": "Hellstone Satchel"
+      },
+      {
+        "assetId": "125033280157775",
+        "maxLoad": 100,
+        "name": "Hide Satchel"
+      },
+      {
+        "assetId": "73933236812142",
+        "maxLoad": 125,
+        "name": "Iron Satchel"
+      },
+      {
+        "assetId": "107822984445286",
+        "maxLoad": 27500,
+        "name": "Kitty Satchel"
+      },
+      {
+        "assetId": "139986311879481",
+        "maxLoad": 75,
+        "name": "Leaf Satchel"
+      },
+      {
+        "assetId": "107491197027072",
+        "maxLoad": 375,
+        "name": "Magnetite Satchel"
+      },
+      {
+        "assetId": "110911875315600",
+        "name": "Phantomite Satchel"
+      },
+      {
+        "assetId": "100509797132910",
+        "maxLoad": 750,
+        "name": "Pink Diamond Satchel"
+      },
+      {
+        "assetId": "121063441871692",
+        "maxLoad": 30000,
+        "name": "Pumpkin Satchel"
+      },
+      {
+        "assetId": "128212825495400",
+        "maxLoad": 30000,
+        "name": "Serpent Satchel"
+      },
+      {
+        "assetId": "92068023392776",
+        "maxLoad": 30000,
+        "name": "Skeleton Satchel"
+      },
+      {
+        "assetId": "137511682167470",
+        "name": "Soulite Satchel"
+      },
+      {
+        "assetId": "135785163573008",
+        "maxLoad": 150,
+        "name": "Steel Satchel"
+      },
+      {
+        "assetId": "125662769807978",
+        "maxLoad": 25000,
+        "name": "Transcendant Satchel"
+      },
+      {
+        "assetId": "90753821506476",
+        "maxLoad": 500000,
+        "name": "Tree Morph"
+      },
+      {
+        "assetId": "128123769095301",
+        "maxLoad": 9000,
+        "name": "Tutorial Satchel"
+      },
+      {
+        "assetId": "132418855450341",
+        "maxLoad": 9000,
+        "name": "Undead Satchel"
+      },
+      {
+        "assetId": "4823036",
+        "health": 50,
+        "name": "Void Banto Satchel"
+      },
+      {
+        "assetId": "115780694306531",
+        "maxLoad": 1500,
+        "name": "Void Satchel"
+      },
+      {
+        "assetId": "110276317352898",
+        "maxLoad": 30000,
+        "name": "Zombie Satchel"
+      }
+    ],
+    "Soulite": [
+      {
+        "assetId": "132418156633906",
+        "name": "Soulite Bottom Left Leg"
+      },
+      {
+        "assetId": "128956501901693",
+        "name": "Soulite Bottom Right Leg"
+      },
+      {
+        "assetId": "14522537378",
+        "health": 100,
+        "name": "Soulite Chestplate"
+      },
+      {
+        "assetId": "133613372873454",
+        "name": "Soulite Helmet"
+      },
+      {
+        "assetId": "83293866922427",
+        "name": "Soulite Left Arm"
+      },
+      {
+        "assetId": "79397230010759",
+        "name": "Soulite Left Leg"
+      },
+      {
+        "assetId": "118982101351529",
+        "name": "Soulite Left Shoulder"
+      },
+      {
+        "assetId": "136278434575603",
+        "name": "Soulite Lower Torso"
+      },
+      {
+        "assetId": "113221610652439",
+        "name": "Soulite Right Arm"
+      },
+      {
+        "assetId": "122175723500557",
+        "name": "Soulite Right Leg"
+      },
+      {
+        "assetId": "132134869427545",
+        "name": "Soulite Right Shoulder"
+      }
+    ],
+    "Steel": [
+      {
+        "assetId": "14525361233",
+        "name": "Steel Chestplate",
+        "protection": 10
+      },
+      {
+        "assetId": "14525308423",
+        "name": "Steel Greaves Left Foot",
+        "protection": 10
+      },
+      {
+        "assetId": "14525308423",
+        "name": "Steel Greaves Left Leg",
+        "protection": 10
+      },
+      {
+        "assetId": "14525308423",
+        "name": "Steel Greaves Right Foot",
+        "protection": 10
+      },
+      {
+        "assetId": "14525308423",
+        "name": "Steel Greaves Right Leg",
+        "protection": 10
+      },
+      {
+        "assetId": "14525378044",
+        "name": "Steel Helmet",
+        "protection": 10
+      },
+      {
+        "assetId": "14525361233",
+        "name": "Steel Left Shoulder",
+        "protection": 10
+      },
+      {
+        "assetId": "14525361233",
+        "name": "Steel Right Shoulder",
+        "protection": 10
+      }
+    ],
+    "Undead": [
+      {
+        "assetId": "135812757175416",
+        "name": "Undead Bottom Left Leg"
+      },
+      {
+        "assetId": "79086235849266",
+        "name": "Undead Bottom Right Leg"
+      },
+      {
+        "assetId": "14522537378",
+        "health": 100,
+        "name": "Undead Chestplate"
+      },
+      {
+        "assetId": "108001943472610",
+        "name": "Undead Helmet"
+      },
+      {
+        "assetId": "130758475355914",
+        "name": "Undead Left Arm"
+      },
+      {
+        "assetId": "110501537437368",
+        "name": "Undead Left Leg"
+      },
+      {
+        "assetId": "87084681803210",
+        "name": "Undead Left Shoulder"
+      },
+      {
+        "assetId": "91235392734602",
+        "name": "Undead Lower Torso"
+      },
+      {
+        "assetId": "76838408616792",
+        "name": "Undead Right Arm"
+      },
+      {
+        "assetId": "78353167498637",
+        "name": "Undead Right Leg"
+      },
+      {
+        "assetId": "79352869540024",
+        "name": "Undead Right Shoulder"
+      }
+    ],
+    "Void": [
+      {
+        "assetId": "14525241526",
+        "name": "Void Chestplate",
+        "protection": 22
+      },
+      {
+        "assetId": "14525281677",
+        "name": "Void Greaves Left Foot",
+        "protection": 22
+      },
+      {
+        "assetId": "14525281677",
+        "name": "Void Greaves Left Leg",
+        "protection": 22
+      },
+      {
+        "assetId": "14525281677",
+        "name": "Void Greaves Right Foot",
+        "protection": 22
+      },
+      {
+        "assetId": "14525281677",
+        "name": "Void Greaves Right Leg",
+        "protection": 22
+      },
+      {
+        "assetId": "14525241526",
+        "name": "Void Left Shoulder",
+        "protection": 22
+      },
+      {
+        "assetId": "14525241526",
+        "name": "Void Right Shoulder",
+        "protection": 22
+      },
+      {
+        "assetId": "14525240263",
+        "name": "Void Shroud",
+        "protection": 22
+      }
+    ]
+  },
+  "Deployables": [
+    {
+      "assetId": "89581877259468",
+      "health": 100,
+      "name": "Ancient Torch"
+    },
+    {
+      "assetId": "16041984172",
+      "health": 400,
+      "name": "Archer Tower"
+    },
+    {
+      "assetId": "137750582480096",
+      "health": 100,
+      "name": "Arrow Station"
+    },
+    {
+      "assetId": "108351405211548",
+      "health": 350,
+      "mobs": 60,
+      "name": "Auto Turret",
+      "players": 80,
+      "stoneStructure": 140,
+      "woodStructure": 140
+    },
+    {
+      "assetId": "122746387736671",
+      "health": 250,
+      "mobs": 70,
+      "name": "Ballista",
+      "players": 70,
+      "stoneStructure": 140,
+      "woodStructure": 140
+    },
+    {
+      "assetId": "81273127504210",
+      "health": 50,
+      "name": "Bear Trap"
+    },
+    {
+      "assetId": "111106640024554",
+      "health": 25,
+      "name": "Bed"
+    },
+    {
+      "assetId": "133931386314961",
+      "health": 5000,
+      "name": "Big Ol' Hovel"
+    },
+    {
+      "assetId": "14522496967",
+      "health": 2000,
+      "name": "Big Ol' Hut"
+    },
+    {
+      "assetId": "14522535467",
+      "health": 300,
+      "name": "Bridge"
+    },
+    {
+      "assetId": "14522536386",
+      "health": 25,
+      "name": "Campfire"
+    },
+    {
+      "assetId": "15975805141",
+      "name": "Caravel"
+    },
+    {
+      "assetId": "119318232706717",
+      "health": 250,
+      "mobs": 70,
+      "name": "Catapult",
+      "players": 70,
+      "stoneStructure": 140,
+      "woodStructure": 140
+    },
+    {
+      "assetId": "127063346732746",
+      "name": "Cauldron"
+    },
+    {
+      "assetId": "14522537378",
+      "health": 100,
+      "name": "Chest"
+    },
+    {
+      "assetId": "85829357473787",
+      "health": 3500,
+      "name": "Chieftain Hut"
+    },
+    {
+      "assetId": "14522538795",
+      "health": 200,
+      "name": "Coin Press"
+    },
+    {
+      "name": "Crystal Gate"
+    },
+    {
+      "name": "Crystal Wall"
+    },
+    {
+      "assetId": "14522541320",
+      "health": 100,
+      "name": "Dock"
+    },
+    {
+      "assetId": "89953529366217",
+      "health": 50,
+      "name": "Drum"
+    },
+    {
+      "assetId": "4456775680",
+      "name": "Emerald Gate"
+    },
+    {
+      "assetId": "4456775680",
+      "name": "Emerald Wall"
+    },
+    {
+      "assetId": "107437084807833",
+      "health": 20,
+      "name": "Fence"
+    },
+    {
+      "assetId": "90302414425376",
+      "health": 100,
+      "name": "Fence Gate"
+    },
+    {
+      "assetId": "14522542819",
+      "health": 10,
+      "name": "Fish Trap"
+    },
+    {
+      "assetId": "134402654481036",
+      "health": 400,
+      "name": "Furnace"
+    },
+    {
+      "assetId": "134402654481036",
+      "health": 400,
+      "name": "FurnaceOLD"
+    },
+    {
+      "name": "Gate"
+    },
+    {
+      "assetId": "14522544247",
+      "health": 5000,
+      "name": "God Hut"
+    },
+    {
+      "assetId": "16040104893",
+      "health": 250,
+      "name": "Golden Plant Box"
+    },
+    {
+      "assetId": "14522546395",
+      "health": 200,
+      "name": "Golden Radio"
+    },
+    {
+      "assetId": "14522548870",
+      "health": 25,
+      "name": "Grinder"
+    },
+    {
+      "assetId": "131620851474585",
+      "health": 300,
+      "name": "Hex Mine"
+    },
+    {
+      "assetId": "14522550032",
+      "health": 200,
+      "name": "Hovel"
+    },
+    {
+      "assetId": "14522550950",
+      "health": 100,
+      "name": "Hut"
+    },
+    {
+      "assetId": "14522551972",
+      "health": 300,
+      "name": "Ice Gate"
+    },
+    {
+      "assetId": "14522553302",
+      "health": 10,
+      "name": "Ice Raft"
+    },
+    {
+      "assetId": "14522554291",
+      "health": 300,
+      "name": "Ice Wall"
+    },
+    {
+      "assetId": "14522555199",
+      "health": 1500,
+      "name": "Infinity Chest"
+    },
+    {
+      "assetId": "14522556178",
+      "health": 2000,
+      "name": "Iron Gate"
+    },
+    {
+      "assetId": "14522557021",
+      "health": 2000,
+      "name": "Iron Turret"
+    },
+    {
+      "assetId": "14522558542",
+      "health": 2000,
+      "name": "Iron Wall"
+    },
+    {
+      "assetId": "127678720076064",
+      "health": 40,
+      "name": "Ladder"
+    },
+    {
+      "assetId": "128709963122501",
+      "health": 50,
+      "name": "Large Fence"
+    },
+    {
+      "assetId": "118179182120666",
+      "health": 50,
+      "name": "Log Seat"
+    },
+    {
+      "assetId": "15697574626",
+      "name": "Longboat"
+    },
+    {
+      "assetId": "528256032",
+      "name": "Longship"
+    },
+    {
+      "assetId": "14522561804",
+      "health": 100,
+      "name": "Lookout"
+    },
+    {
+      "assetId": "14522562768",
+      "health": 6000,
+      "name": "Magnetite Gate"
+    },
+    {
+      "assetId": "14522564012",
+      "health": 6000,
+      "name": "Magnetite Wall"
+    },
+    {
+      "assetId": "14522570678",
+      "health": 25,
+      "name": "Nest"
+    },
+    {
+      "assetId": "139506855131668",
+      "health": 8000,
+      "name": "Obsidian Gate"
+    },
+    {
+      "assetId": "114098421109674",
+      "health": 8000,
+      "name": "Obsidian Wall"
+    },
+    {
+      "assetId": "132442844919954",
+      "health": 44,
+      "name": "Odd Campfire"
+    },
+    {
+      "assetId": "95993232796206",
+      "health": 250,
+      "name": "Palisade"
+    },
+    {
+      "assetId": "14522571674",
+      "health": 25,
+      "name": "Plant Box"
+    },
+    {
+      "assetId": "14522572648",
+      "health": 50,
+      "name": "Radio"
+    },
+    {
+      "assetId": "14522573840",
+      "health": 10,
+      "name": "Raft"
+    },
+    {
+      "assetId": "14522574750",
+      "health": 750,
+      "name": "Reinforced Chest"
+    },
+    {
+      "assetId": "14522575790",
+      "health": 200,
+      "name": "Sailboat"
+    },
+    {
+      "assetId": "16333769260",
+      "health": 100,
+      "name": "Sawmill"
+    },
+    {
+      "assetId": "114975028316512",
+      "health": 800,
+      "name": "Scrapper"
+    },
+    {
+      "assetId": "102767145166989",
+      "health": 300,
+      "name": "Spirit Beacon"
+    },
+    {
+      "assetId": "82232052795755",
+      "health": 250,
+      "name": "Spring Trap"
+    },
+    {
+      "assetId": "14522576860",
+      "health": 50,
+      "name": "Squad Raft"
+    },
+    {
+      "assetId": "14522577860",
+      "health": 100,
+      "name": "Stable"
+    },
+    {
+      "assetId": "14522578623",
+      "health": 100,
+      "name": "Steel Raft"
+    },
+    {
+      "assetId": "14522579369",
+      "health": 600,
+      "name": "Stone Gate"
+    },
+    {
+      "assetId": "14522580473",
+      "health": 600,
+      "name": "Stone Wall"
+    },
+    {
+      "assetId": "124951568840424",
+      "health": 50,
+      "name": "Tiki Torch"
+    },
+    {
+      "assetId": "14522582762",
+      "health": 500,
+      "name": "Tower"
+    },
+    {
+      "assetId": "79162200971970",
+      "health": 250,
+      "name": "Trapdoor"
+    },
+    {
+      "assetId": "1449988276",
+      "health": 5000,
+      "name": "Tribe Totem"
+    },
+    {
+      "assetId": "102472641494888",
+      "health": 200,
+      "name": "Tripwire"
+    },
+    {
+      "assetId": "111138150583783",
+      "name": "Underworld Gate"
+    },
+    {
+      "assetId": "14522583646",
+      "health": 200,
+      "name": "Void Gate"
+    },
+    {
+      "assetId": "71788191550481",
+      "health": 100,
+      "name": "Void Torch"
+    },
+    {
+      "assetId": "14522586173",
+      "health": 200,
+      "name": "Wood Gate"
+    },
+    {
+      "assetId": "97587267393339",
+      "health": 100,
+      "name": "Wood Pillar"
+    },
+    {
+      "assetId": "71512151636417",
+      "health": 100,
+      "name": "Wood Stairs"
+    },
+    {
+      "assetId": "14522587069",
+      "health": 200,
+      "name": "Wood Wall"
+    },
+    {
+      "assetId": "16041997507",
+      "health": 10,
+      "name": "Wooden Chair"
+    },
+    {
+      "assetId": "121419534483267",
+      "health": 200,
+      "name": "Wooden Sign"
+    },
+    {
+      "assetId": "16041988739",
+      "health": 100,
+      "name": "Wooden Spikes"
+    }
+  ],
+  "Projectiles": [
+    {
+      "assetId": "1468675741",
+      "name": "Arrow"
+    },
+    {
+      "assetId": "114889000091083",
+      "name": "Blazing Arrow"
+    },
+    {
+      "assetId": "108910141179504",
+      "name": "Blazing Bolt"
+    },
+    {
+      "assetId": "1468675741",
+      "name": "Bolt"
+    },
+    {
+      "assetId": "119650188317119",
+      "name": "Chilled Arrow"
+    },
+    {
+      "assetId": "104014265381593",
+      "name": "Chilled Bolt"
+    },
+    {
+      "assetId": "79809408079304",
+      "name": "Coconut"
+    },
+    {
+      "assetId": "1468675741",
+      "name": "Crystal Bolt"
+    },
+    {
+      "assetId": "73836717540855",
+      "name": "Hex Arrow"
+    },
+    {
+      "assetId": "119872549847852",
+      "name": "Hex Bolt"
+    },
+    {
+      "assetId": "97004881624090",
+      "name": "Magnetite Arrow"
+    },
+    {
+      "assetId": "77695492404760",
+      "name": "Rupture Arrow"
+    },
+    {
+      "assetId": "70762591674429",
+      "name": "Snowball"
+    },
+    {
+      "assetId": "13602576200",
+      "name": "Stone"
+    },
+    {
+      "assetId": "133110316338353",
+      "name": "Stunning Arrow"
+    },
+    {
+      "assetId": "92209314311665",
+      "name": "Stunning Bolt"
+    },
+    {
+      "assetId": "4029159704",
+      "name": "VisualizationBeam"
+    },
+    {
+      "assetId": "125824828387821",
+      "name": "Vortex Arrow"
+    }
+  ],
+  "Tools": {
+    "Admin": [
+      {
+        "assetId": "118599582553008",
+        "mobs": 80,
+        "name": "Cursed Greatsword",
+        "players": 80,
+        "speed": 0.3333333333333333,
+        "stone": 20,
+        "stoneStructure": 20,
+        "wood": 20,
+        "woodStructure": 20
+      },
+      {
+        "assetId": "122234184049816",
+        "mobs": 105,
+        "name": "Emerald Stick",
+        "players": 105,
+        "speed": 0.3333333333333333,
+        "stone": 250,
+        "stoneStructure": 250,
+        "wood": 250,
+        "woodStructure": 250
+      },
+      {
+        "assetId": "10771523857",
+        "name": "Lightning Cape",
+        "speed": inf
+      },
+      {
+        "assetId": "124007922295307",
+        "mobs": 80,
+        "name": "Magnetite Stick",
+        "players": 80,
+        "speed": 0.3333333333333333,
+        "stone": 100,
+        "stoneStructure": 100,
+        "wood": 100,
+        "woodStructure": 100
+      },
+      {
+        "assetId": "132309199898978",
+        "mobs": 1,
+        "name": "Meteor Staff",
+        "players": 1,
+        "speed": 0.5,
+        "stone": inf,
+        "stoneStructure": inf,
+        "wood": inf,
+        "woodStructure": inf
+      },
+      {
+        "assetId": "98561253527248",
+        "mobs": 125,
+        "name": "Pink Diamond Stick",
+        "players": 125,
+        "speed": 0.3333333333333333,
+        "stone": 250,
+        "stoneStructure": 250,
+        "wood": 250,
+        "woodStructure": 250
+      },
+      {
+        "assetId": "96905021308679",
+        "mobs": 17,
+        "name": "Serpent Spear",
+        "players": 19,
+        "speed": 0.6666666666666666,
+        "stone": 2,
+        "stoneStructure": 2,
+        "wood": 2,
+        "woodStructure": 2
+      },
+      {
+        "assetId": "25766289",
+        "name": "The Crayon"
+      },
+      {
+        "assetId": "112724753316201",
+        "mobs": inf,
+        "name": "The Glitchmaker",
+        "players": inf,
+        "speed": 0.2,
+        "stone": inf,
+        "stoneStructure": inf,
+        "wood": inf,
+        "woodStructure": inf
+      },
+      {
+        "assetId": "100761094733442",
+        "mobs": 1000,
+        "name": "The Meatmaker",
+        "players": 1000,
+        "speed": 1,
+        "stone": 5004,
+        "stoneStructure": 5021,
+        "wood": 5004,
+        "woodStructure": 5004
+      },
+      {
+        "assetId": "96408494995018",
+        "mobs": inf,
+        "name": "The Moneymaker",
+        "players": inf,
+        "speed": 0.2,
+        "stone": 500643,
+        "stoneStructure": 500436,
+        "wood": 50034634,
+        "woodStructure": 5004363
+      },
+      {
+        "assetId": "130821431505177",
+        "mobs": 100,
+        "name": "Void Stick",
+        "players": 100,
+        "speed": 0.3333333333333333,
+        "stone": 100,
+        "stoneStructure": 100,
+        "wood": 100,
+        "woodStructure": 100
+      }
+    ],
+    "Adurite": [
+      {
+        "assetId": "121792012389222",
+        "mobs": 13,
+        "name": "Adurite Axe",
+        "players": 13,
+        "speed": 0.3333333333333333,
+        "wood": 6,
+        "woodStructure": 6
+      },
+      {
+        "assetId": "88652414163845",
+        "mobs": 13,
+        "name": "Adurite Pick",
+        "players": 13,
+        "speed": 0.3333333333333333,
+        "stone": 6,
+        "stoneStructure": 6
+      },
+      {
+        "assetId": "14524760435",
+        "mobs": 60,
+        "name": "War Hammer",
+        "players": 60,
+        "speed": 1,
+        "stone": 5,
+        "stoneStructure": 5,
+        "wood": 5,
+        "woodStructure": 5
+      }
+    ],
+    "Artifact": [
+      {
+        "assetId": "80030868639950",
+        "name": "Bloodlust Artifact"
+      },
+      {
+        "assetId": "109354360219565",
+        "name": "Coin Artifact"
+      },
+      {
+        "assetId": "18321854959",
+        "name": "Develop Artifact"
+      },
+      {
+        "assetId": "140503121949068",
+        "name": "Developer Artifact"
+      },
+      {
+        "assetId": "97557818466245",
+        "name": "Essence Artifact"
+      },
+      {
+        "assetId": "129413051910830",
+        "name": "Health Artifact"
+      },
+      {
+        "assetId": "130421936368240",
+        "name": "Hunger Artifact"
+      },
+      {
+        "assetId": "105196713363780",
+        "name": "Luck Artifact"
+      },
+      {
+        "assetId": "106473114239137",
+        "name": "Overheal Artifact"
+      },
+      {
+        "assetId": "139327186554771",
+        "name": "Rebirth Artifact"
+      },
+      {
+        "assetId": "138412603736175",
+        "name": "Serpent Artifact"
+      },
+      {
+        "assetId": "112129219932396",
+        "name": "Shrink Artifact"
+      },
+      {
+        "assetId": "109734133538099",
+        "name": "Skeleton Artifact"
+      },
+      {
+        "assetId": "140503121949068",
+        "name": "True Developer Artifact"
+      },
+      {
+        "assetId": "89017728586346",
+        "name": "Undead Artifact"
+      },
+      {
+        "assetId": "96352600168565",
+        "name": "Voodoo Artifact"
+      },
+      {
+        "assetId": "134465114390746",
+        "name": "Zombie Artifact"
+      }
+    ],
+    "Charm": [
+      {
+        "assetId": "112768767501027",
+        "name": "Adurite Charm",
+        "speed": 0.3333333333333333
+      },
+      {
+        "assetId": "110062428517954",
+        "name": "Ancient Charm",
+        "speed": 0.3333333333333333
+      },
+      {
+        "assetId": "113234011092518",
+        "name": "Dark Charm",
+        "speed": 0.3333333333333333
+      },
+      {
+        "assetId": "109942014691432",
+        "name": "Essence Charm",
+        "speed": 0.3333333333333333
+      },
+      {
+        "assetId": "119534586904364",
+        "name": "Lonely Charm",
+        "speed": 0.3333333333333333
+      },
+      {
+        "assetId": "97792941952168",
+        "name": "Pink Diamond Charm",
+        "speed": 0.3333333333333333
+      },
+      {
+        "assetId": "77437434782930",
+        "name": "Sun Charm",
+        "speed": 0.3333333333333333
+      },
+      {
+        "assetId": "85309978598064",
+        "name": "Void Charm",
+        "speed": 0.3333333333333333
+      },
+      {
+        "assetId": "126702302443932",
+        "name": "Vortex Charm",
+        "speed": 0.3333333333333333
+      }
+    ],
+    "Crystal": [
+      {
+        "assetId": "115600184349712",
+        "mobs": 13,
+        "name": "Crystal Axe",
+        "players": 13,
+        "speed": 0.3333333333333333,
+        "spirit": 5,
+        "wood": 8,
+        "woodStructure": 8
+      },
+      {
+        "assetId": "121083587771642",
+        "mobs": 30,
+        "name": "Crystal Blade",
+        "players": 30,
+        "speed": 0.5,
+        "stone": 6,
+        "stoneStructure": 6,
+        "wood": 6,
+        "woodStructure": 6
+      },
+      {
+        "assetId": "137525743761822",
+        "mobs": 13,
+        "name": "Crystal Pick",
+        "players": 13,
+        "speed": 0.3333333333333333,
+        "spirit": 5,
+        "stone": 8,
+        "stoneStructure": 8
+      }
+    ],
+    "Emerald": [
+      {
+        "assetId": "103699754342362",
+        "mobs": 17,
+        "name": "Emerald Axe",
+        "players": 17,
+        "speed": 0.3333333333333333,
+        "wood": 12,
+        "woodStructure": 12
+      },
+      {
+        "assetId": "14524727058",
+        "mobs": 60,
+        "name": "Emerald Blade",
+        "players": 60,
+        "speed": 0.5,
+        "stone": 8,
+        "stoneStructure": 8,
+        "wood": 8,
+        "woodStructure": 8
+      },
+      {
+        "assetId": "84762369938579",
+        "mobs": 17,
+        "name": "Emerald Pick",
+        "players": 17,
+        "speed": 0.3333333333333333,
+        "spirit": 5,
+        "stone": 12,
+        "stoneStructure": 12
+      },
+      {
+        "assetId": "112570348977188",
+        "name": "Emerald Sickle",
+        "speed": 0.36363636363636365
+      }
+    ],
+    "God": [
+      {
+        "assetId": "99478188938351",
+        "mobs": 30,
+        "name": "God Axe",
+        "players": 30,
+        "speed": 0.3333333333333333,
+        "wood": 35,
+        "woodStructure": 40
+      },
+      {
+        "assetId": "139239679908221",
+        "mobs": 89,
+        "name": "God Battle Axe",
+        "players": 95,
+        "speed": 0.5,
+        "stone": 40,
+        "stoneStructure": 20,
+        "wood": 40,
+        "woodStructure": 20
+      },
+      {
+        "assetId": "78910532824706",
+        "mobs": 100,
+        "name": "God Crossbow",
+        "players": 50,
+        "speed": 2.5,
+        "stone": 100,
+        "stoneStructure": 100,
+        "wood": 100,
+        "woodStructure": 100
+      },
+      {
+        "assetId": "76331989780495",
+        "mobs": 30,
+        "name": "God Pick",
+        "players": 30,
+        "speed": 0.3333333333333333,
+        "spirit": 5,
+        "stone": 35,
+        "stoneStructure": 40
+      },
+      {
+        "assetId": "120042562032637",
+        "name": "God Rod",
+        "speed": 5
+      },
+      {
+        "assetId": "102372341549272",
+        "mobs": 120,
+        "name": "God Scythe",
+        "players": 120,
+        "speed": 1,
+        "stone": 80,
+        "stoneStructure": 80,
+        "wood": 80,
+        "woodStructure": 80
+      },
+      {
+        "assetId": "138387141522481",
+        "name": "God Sickle",
+        "speed": 0.25
+      },
+      {
+        "assetId": "98595025608893",
+        "mobs": 40,
+        "name": "God Staff",
+        "players": 40,
+        "speed": 6,
+        "stone": 200,
+        "stoneStructure": 200,
+        "wood": 200,
+        "woodStructure": 200
+      },
+      {
+        "assetId": "97821761313920",
+        "mobs": 80,
+        "name": "God Sword",
+        "players": 80,
+        "speed": 0.3333333333333333,
+        "stone": 20,
+        "stoneStructure": 20,
+        "wood": 20,
+        "woodStructure": 20
+      },
+      {
+        "assetId": "14524744656",
+        "name": "OOF Horn",
+        "speed": 24
+      }
+    ],
+    "Hellstone": [
+      {
+        "assetId": "106338463877401",
+        "name": "Hellstone Axe",
+        "speed": 0.3333333333333333,
+        "wood": 65,
+        "woodStructure": 30
+      },
+      {
+        "assetId": "108764121026992",
+        "name": "Hellstone Pick",
+        "speed": 0.3333333333333333,
+        "stone": 65,
+        "stoneStructure": 35
+      },
+      {
+        "assetId": "13602576200",
+        "name": "Hellstone Sword"
+      }
+    ],
+    "Iron": [
+      {
+        "assetId": "104695560652353",
+        "mobs": 35,
+        "name": "Crossbow",
+        "players": 35,
+        "speed": 2.5,
+        "stone": 25,
+        "stoneStructure": 25,
+        "wood": 25,
+        "woodStructure": 25
+      },
+      {
+        "assetId": "135126165828499",
+        "mobs": 9,
+        "name": "Iron Axe",
+        "players": 9,
+        "speed": 0.3333333333333333,
+        "wood": 4,
+        "woodStructure": 4
+      },
+      {
+        "assetId": "133770281659872",
+        "mobs": 18,
+        "name": "Iron Bow",
+        "players": 18,
+        "speed": 1.6,
+        "stone": 5,
+        "stoneStructure": 5,
+        "wood": 5,
+        "woodStructure": 5
+      },
+      {
+        "assetId": "131235285814870",
+        "mobs": 9,
+        "name": "Iron Pick",
+        "players": 9,
+        "speed": 0.3333333333333333,
+        "stone": 4,
+        "stoneStructure": 4
+      },
+      {
+        "assetId": "14524738037",
+        "mobs": 20,
+        "name": "Mace",
+        "players": 20,
+        "speed": 0.5,
+        "stone": 3,
+        "stoneStructure": 3,
+        "wood": 3,
+        "woodStructure": 3
+      }
+    ],
+    "Magnetite": [
+      {
+        "assetId": "109206277496763",
+        "mobs": 15,
+        "name": "Magnetite Axe",
+        "players": 15,
+        "speed": 0.3333333333333333,
+        "wood": 10,
+        "woodStructure": 10
+      },
+      {
+        "assetId": "127063416871574",
+        "mobs": 75,
+        "name": "Magnetite Crossbow",
+        "players": 75,
+        "speed": 4,
+        "stone": 75,
+        "stoneStructure": 75,
+        "wood": 75,
+        "woodStructure": 75
+      },
+      {
+        "assetId": "98373811643692",
+        "mobs": 70,
+        "name": "Magnetite Double Axe",
+        "players": 70,
+        "speed": 1,
+        "stone": 7,
+        "stoneStructure": 7,
+        "wood": 7,
+        "woodStructure": 7
+      },
+      {
+        "assetId": "137849705872680",
+        "mobs": 15,
+        "name": "Magnetite Pick",
+        "players": 15,
+        "speed": 0.3333333333333333,
+        "spirit": 5,
+        "stone": 10,
+        "stoneStructure": 10
+      }
+    ],
+    "Ossidar": [
+      {
+        "assetId": "134707462651158",
+        "name": "Ossidar Axe",
+        "speed": 0.3333333333333333,
+        "wood": 115,
+        "woodStructure": 35
+      },
+      {
+        "assetId": "4823036",
+        "health": 10000,
+        "name": "Ossidar Sword"
+      }
+    ],
+    "Phantomite": [
+      {
+        "assetId": "85933858695466",
+        "name": "Phantomite Axe",
+        "speed": 0.3333333333333333,
+        "wood": 55,
+        "woodStructure": 25
+      },
+      {
+        "assetId": "93303042019043",
+        "name": "Phantomite Pick",
+        "speed": 0.3333333333333333,
+        "stone": 55,
+        "stoneStructure": 30
+      },
+      {
+        "assetId": "122695679008033",
+        "name": "Phantomite Sword"
+      }
+    ],
+    "Pink Diamond": [
+      {
+        "assetId": "90554703874563",
+        "mobs": 19,
+        "name": "Pink Diamond Axe",
+        "players": 19,
+        "speed": 0.3333333333333333,
+        "wood": 13,
+        "woodStructure": 13
+      },
+      {
+        "assetId": "81515232604974",
+        "mobs": 17,
+        "name": "Pink Diamond Pick",
+        "players": 17,
+        "speed": 0.3333333333333333,
+        "spirit": 5,
+        "stone": 12,
+        "stoneStructure": 12
+      },
+      {
+        "assetId": "121156464395341",
+        "mobs": 80,
+        "name": "Pink Diamond Scythe",
+        "players": 80,
+        "speed": 1,
+        "stone": 16,
+        "stoneStructure": 16,
+        "wood": 16,
+        "woodStructure": 16
+      }
+    ],
+    "Seasonal": [
+      {
+        "assetId": "97198358183203",
+        "mobs": 15,
+        "name": "Coconut Launcher",
+        "players": 20,
+        "speed": 0.5,
+        "stone": 15,
+        "stoneStructure": 15,
+        "wood": 15,
+        "woodStructure": 15
+      },
+      {
+        "assetId": "125072797163069",
+        "mobs": 13,
+        "name": "Coconut Mace",
+        "players": 65,
+        "speed": 0.5,
+        "stone": 13,
+        "stoneStructure": 13,
+        "wood": 13,
+        "woodStructure": 13
+      },
+      {
+        "assetId": "71688794440211",
+        "mobs": 15,
+        "name": "Coconut Sling",
+        "players": 15,
+        "speed": 0.75,
+        "stone": 5,
+        "stoneStructure": 5,
+        "wood": 5,
+        "woodStructure": 5
+      },
+      {
+        "assetId": "118738041625360",
+        "mobs": 95,
+        "name": "Coconut Smasher",
+        "players": 95,
+        "speed": 2,
+        "stone": 100,
+        "stoneStructure": 100,
+        "wood": 100,
+        "woodStructure": 100
+      },
+      {
+        "assetId": "136849350666558",
+        "mobs": 6,
+        "name": "Snowball Launcher",
+        "players": 6,
+        "speed": 0.5,
+        "stone": 6,
+        "stoneStructure": 6,
+        "wood": 6,
+        "woodStructure": 6
+      },
+      {
+        "assetId": "89005490390293",
+        "mobs": 10,
+        "name": "Snowball Sling",
+        "players": 10,
+        "speed": 0.75,
+        "stone": 2,
+        "stoneStructure": 2,
+        "wood": 2,
+        "woodStructure": 2
+      }
+    ],
+    "Soulite": [
+      {
+        "assetId": "90003162724439",
+        "name": "Soulite Axe",
+        "speed": 0.3333333333333333,
+        "wood": 45,
+        "woodStructure": 20
+      },
+      {
+        "assetId": "73390909154495",
+        "name": "Soulite Pick",
+        "speed": 0.3333333333333333,
+        "stone": 45,
+        "stoneStructure": 25
+      },
+      {
+        "assetId": "77336118369536",
+        "name": "Soulite Sword"
+      }
+    ],
+    "Steel": [
+      {
+        "assetId": "14524718233",
+        "mobs": 30,
+        "name": "Battle Axe",
+        "players": 30,
+        "speed": 0.5,
+        "stone": 4,
+        "stoneStructure": 4,
+        "wood": 4,
+        "woodStructure": 4
+      },
+      {
+        "assetId": "109497447308828",
+        "name": "Sickle",
+        "speed": 0.4444444444444444
+      },
+      {
+        "assetId": "14524753275",
+        "mobs": 8,
+        "name": "Sling",
+        "players": 8,
+        "speed": 0.8,
+        "stone": 1,
+        "stoneStructure": 1,
+        "wood": 1,
+        "woodStructure": 1
+      },
+      {
+        "assetId": "122499903338456",
+        "mobs": 11,
+        "name": "Steel Axe",
+        "players": 11,
+        "speed": 0.3333333333333333,
+        "wood": 5,
+        "woodStructure": 5
+      },
+      {
+        "assetId": "126336479675839",
+        "name": "Steel Fishing Rod",
+        "speed": 6
+      },
+      {
+        "assetId": "90080409522940",
+        "mobs": 11,
+        "name": "Steel Pick",
+        "players": 11,
+        "speed": 0.3333333333333333,
+        "stone": 5,
+        "stoneStructure": 5
+      }
+    ],
+    "Stone": [
+      {
+        "assetId": "14524720002",
+        "mobs": 20,
+        "name": "Boulder",
+        "players": 20,
+        "speed": 0.5,
+        "stone": 5,
+        "stoneStructure": 5,
+        "wood": 5,
+        "woodStructure": 5
+      },
+      {
+        "assetId": "14542941131",
+        "mobs": 5,
+        "name": "Rock",
+        "players": 5,
+        "speed": 0.3333333333333333,
+        "stone": 1,
+        "stoneStructure": 1,
+        "wood": 1,
+        "woodStructure": 1
+      },
+      {
+        "assetId": "96905021308679",
+        "mobs": 17,
+        "name": "Spear",
+        "players": 19,
+        "speed": 0.6666666666666666,
+        "stone": 2,
+        "stoneStructure": 2,
+        "wood": 2,
+        "woodStructure": 2
+      },
+      {
+        "assetId": "85133601127075",
+        "mobs": 7,
+        "name": "Stone Axe",
+        "players": 7,
+        "speed": 0.3333333333333333,
+        "wood": 3,
+        "woodStructure": 3
+      },
+      {
+        "assetId": "102914276711309",
+        "mobs": 7,
+        "name": "Stone Pick",
+        "players": 7,
+        "speed": 0.3333333333333333,
+        "stone": 3,
+        "stoneStructure": 3
+      }
+    ],
+    "Undead": [
+      {
+        "assetId": "110286953581761",
+        "name": "Undead Axe",
+        "speed": 0.3333333333333333,
+        "wood": 125,
+        "woodStructure": 125
+      },
+      {
+        "assetId": "104014537078519",
+        "name": "Undead Mallet"
+      },
+      {
+        "assetId": "82759486595210",
+        "name": "Undead Pick",
+        "speed": 0.3333333333333333,
+        "stone": 125,
+        "stoneStructure": 125
+      }
+    ],
+    "Useables": [
+      {
+        "assetId": "14524719056",
+        "name": "Big Saddle",
+        "speed": 1
+      },
+      {
+        "assetId": "14524752498",
+        "name": "Saddle",
+        "speed": 1
+      }
+    ],
+    "Void": [
+      {
+        "assetId": "84475646750850",
+        "mobs": 21,
+        "name": "Void Axe",
+        "players": 21,
+        "speed": 0.3333333333333333,
+        "wood": 15,
+        "woodStructure": 125
+      },
+      {
+        "assetId": "117771111810373",
+        "mobs": 45,
+        "name": "Void Bow",
+        "players": 45,
+        "speed": 1.5,
+        "stone": 10,
+        "stoneStructure": 10,
+        "wood": 10,
+        "woodStructure": 10
+      },
+      {
+        "assetId": "71865748817674",
+        "mobs": 20,
+        "name": "Void Pick",
+        "players": 20,
+        "speed": 0.3333333333333333,
+        "spirit": 7,
+        "stone": 125,
+        "stoneStructure": 15
+      },
+      {
+        "assetId": "109979574045218",
+        "mobs": 75,
+        "name": "Void Spear",
+        "players": 75,
+        "speed": 0.5,
+        "stone": 10,
+        "stoneStructure": 10,
+        "wood": 10,
+        "woodStructure": 10
+      },
+      {
+        "assetId": "71788191550481",
+        "health": 100,
+        "name": "Void Torch"
+      }
+    ],
+    "Vortex": [
+      {
+        "assetId": "102405590753938",
+        "mobs": 100,
+        "name": "Vortex Bow",
+        "players": 50,
+        "speed": 2,
+        "stone": 125,
+        "stoneStructure": 125,
+        "wood": 125,
+        "woodStructure": 125
+      },
+      {
+        "assetId": "105560044871289",
+        "mobs": 33,
+        "name": "Vortex Cleaver",
+        "players": 30,
+        "speed": 0.16666666666666666,
+        "stone": 12,
+        "stoneStructure": 15,
+        "wood": 12,
+        "woodStructure": 15
+      },
+      {
+        "assetId": "79372208154711",
+        "mobs": 100,
+        "name": "Vortex Greatsword",
+        "players": 95,
+        "speed": 0.4,
+        "stone": 45,
+        "stoneStructure": 45,
+        "wood": 45,
+        "woodStructure": 45
+      },
+      {
+        "assetId": "82261073777231",
+        "mobs": 50,
+        "name": "Vortex Staff",
+        "players": 50,
+        "speed": 5,
+        "stone": 1000,
+        "stoneStructure": 1000,
+        "wood": 1000,
+        "woodStructure": 1000
+      }
+    ],
+    "Wood": [
+      {
+        "assetId": "138847435778645",
+        "mobs": 10,
+        "name": "Bow",
+        "players": 10,
+        "speed": 1.8,
+        "stone": 2,
+        "stoneStructure": 2,
+        "wood": 2,
+        "woodStructure": 2
+      },
+      {
+        "assetId": "14524721889",
+        "mobs": 15,
+        "name": "Club",
+        "players": 15,
+        "speed": 0.5,
+        "stone": 1,
+        "stoneStructure": 1,
+        "wood": 1,
+        "woodStructure": 1
+      },
+      {
+        "assetId": "1496965163",
+        "name": "Fishing Rod",
+        "speed": 6
+      },
+      {
+        "assetId": "4823036",
+        "health": 20,
+        "name": "Peeper Pop Hammer"
+      },
+      {
+        "assetId": "14522581507",
+        "maxLoad": 100,
+        "name": "Torch"
+      },
+      {
+        "assetId": "14524761757",
+        "name": "War Horn",
+        "speed": 15
+      },
+      {
+        "assetId": "120104488565605",
+        "mobs": 5,
+        "name": "Wood Axe",
+        "players": 5,
+        "speed": 0.3333333333333333,
+        "wood": 2,
+        "woodStructure": 2
+      },
+      {
+        "assetId": "123901263427808",
+        "mobs": 5,
+        "name": "Wood Pick",
+        "players": 5,
+        "speed": 0.3333333333333333,
+        "stone": 2,
+        "stoneStructure": 2
+      }
+    ]
+  },
+  "game": "Survival Odyssey",
+  "placeId": 18629053284,
+  "timestamp": "2026-03-31 23:34:46 UTC"
+}
