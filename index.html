@@ -473,13 +473,13 @@ function renderCategorizedSection(container, num, id, title, desc, catData, shou
   if (hasAnyItems) container.insertAdjacentHTML('beforeend', html);
 }
 
-function renderFlatSection(container, num, id, title, desc, items, imgFn) {
+function renderFlatSection(container, num, id, title, desc, items, imgFn, sortFn) {
   let html = `<div class="section-block" data-section-id="${id}">`;
   html += `<h2 class="section-heading" id="${id}">${num}. ${title}</h2>`;
   html += `<p class="section-desc">${desc}</p>`;
 
   let hasItems = false;
-  const sorted = [...items].sort((a, b) => a.name.localeCompare(b.name));
+  const sorted = [...items].sort(sortFn || ((a, b) => a.name.localeCompare(b.name)));
   for (const item of sorted) {
     const imgUrl = imgFn ? imgFn(item) : undefined;
     const row = buildItemRow(item, imgUrl);
@@ -584,7 +584,7 @@ async function renderData(data) {
 
   renderFlatSection(doc, 3, 'bags', 'Bags',
     'Bags increase your inventory carrying capacity.',
-    bags, getBagImageUrl);
+    bags, getBagImageUrl, (a, b) => (a.maxLoad || 0) - (b.maxLoad || 0));
 
   renderFlatSection(doc, 4, 'satchels', 'Satchels',
     'Satchels provide additional carrying capacity in a separate equipment slot from bags.',
