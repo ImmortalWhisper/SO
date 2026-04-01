@@ -90,7 +90,6 @@
   .doc {
     max-width: 816px;
     margin: 24px auto;
-    margin-left: 244px;
     background: var(--doc-bg);
     border: 1px solid var(--border);
     border-radius: 4px;
@@ -101,7 +100,6 @@
 
   @media (max-width: 1100px) {
     .toc { width: 180px; }
-    .doc { margin-left: 204px; }
   }
 
   @media (max-width: 900px) {
@@ -596,19 +594,13 @@ function cleanupEmptySections() {
   document.querySelectorAll('.section-block').forEach(block => {
     if (!block.querySelector('.item-row')) block.remove();
   });
-  // Update TOC: hide links to sections that no longer exist, show them if they do
+  // Update TOC: dim links to sections that no longer exist, but never remove them
   document.querySelectorAll('.toc a[data-target]').forEach(link => {
     const targetId = link.dataset.target;
-    if (targetId && !document.getElementById(targetId)) {
-      link.style.display = 'none';
-    }
+    const exists = targetId && document.getElementById(targetId);
+    link.style.opacity = exists ? '1' : '0.35';
+    link.style.pointerEvents = exists ? '' : 'none';
   });
-  // If all TOC links are hidden, hide entire TOC
-  const toc = document.querySelector('.toc');
-  if (toc) {
-    const visibleLinks = toc.querySelectorAll('a[data-target]:not([style*="display: none"])');
-    toc.style.display = visibleLinks.length ? '' : 'none';
-  }
 }
 
 // ══════════════ FILE PICKER FALLBACK ══════════════
