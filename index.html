@@ -537,13 +537,18 @@ async function renderData(data) {
   tocEl.innerHTML = tocInner;
   document.body.appendChild(tocEl);
 
-  // Smooth scroll
+  // Smooth scroll with re-correction for lazy image layout shifts
   tocEl.addEventListener('click', (e) => {
     const link = e.target.closest('a');
     if (!link) return;
     e.preventDefault();
-    const target = document.getElementById(link.dataset.target);
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const targetId = link.dataset.target;
+    const target = document.getElementById(targetId);
+    if (!target) return;
+    // Scroll, then re-scroll after images may have shifted layout
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 400);
+    setTimeout(() => { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 900);
   });
 
   // Highlight active TOC link on scroll
