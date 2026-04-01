@@ -384,7 +384,7 @@ function buildStatTags(item) {
 function buildItemRow(item, imgOverride) {
   const imgSrc = imgOverride || (item.assetId ? getThumb(item.assetId) : '');
   if (!imgSrc) return ''; // skip items with no image
-  const imgHtml = `<img class="item-img" src="${imgSrc}" alt="${item.name}" loading="lazy" onerror="onItemImgError(this)">`;
+  const imgHtml = `<img class="item-img" src="${imgSrc}" alt="${item.name}" width="72" height="72" onerror="onItemImgError(this)">`;
   const statsHtml = buildStatTags(item);
   return `<div class="item-row">
     ${imgHtml}
@@ -596,12 +596,24 @@ async function renderData(data) {
 }
 
 // Remove item row when image fails, then clean up empty parents
+let _pendingErrors = 0;
+let _cleanupScheduled = false;
 function onItemImgError(img) {
   const row = img.closest('.item-row');
-  if (row) row.remove();
-  // Debounce cleanup
-  clearTimeout(window._cleanupTimer);
-  window._cleanupTimer = setTimeout(cleanupEmptySections, 300);
+  if (row) row.style.display = 'none'; // hide immediately but don't remove yet
+  _pendingErrors++;
+  if (!_cleanupScheduled) {
+    _cleanupScheduled = true;
+    // Wait for all image loads/errors to settle before removing rows
+    setTimeout(() => {
+      document.querySelectorAll('.item-row').forEach(r => {
+        if (r.style.display === 'none') r.remove();
+      });
+      cleanupEmptySections();
+      _cleanupScheduled = false;
+      _pendingErrors = 0;
+    }, 2000);
+  }
 }
 
 function cleanupEmptySections() {
