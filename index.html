@@ -439,13 +439,22 @@ function getSatchelImageUrl(item) {
   return '';
 }
 
-function renderCategorizedSection(container, num, id, title, desc, catData, shouldMerge, imgFn) {
+function renderCategorizedSection(container, num, id, title, desc, catData, shouldMerge, imgFn, priorityCats) {
   let hasAnyItems = false;
   let html = `<div class="section-block" data-section-id="${id}">`;
   html += `<h2 class="section-heading" id="${id}">${num}. ${title}</h2>`;
   html += `<p class="section-desc">${desc}</p>`;
 
-  const sortedCats = Object.keys(catData).sort();
+  const sortedCats = Object.keys(catData).sort((a, b) => {
+    if (priorityCats) {
+      const ai = priorityCats.indexOf(a);
+      const bi = priorityCats.indexOf(b);
+      if (ai !== -1 && bi !== -1) return ai - bi;
+      if (ai !== -1) return -1;
+      if (bi !== -1) return 1;
+    }
+    return a.localeCompare(b);
+  });
   for (const cat of sortedCats) {
     let items = catData[cat];
     if (shouldMerge) items = mergeItems(items);
@@ -567,7 +576,7 @@ async function renderData(data) {
   // Render each section
   renderCategorizedSection(doc, 1, 'tools', 'Tools',
     'Tools include axes, pickaxes, swords, bows, and more. Stats show damage values and speed.',
-    tools, false, getToolImageUrl);
+    tools, false, getToolImageUrl, ['Artifact', 'Charm']);
 
   renderCategorizedSection(doc, 2, 'armor', 'Armor Sets',
     'Armor is worn for protection. Piece variants (greaves, shoulders, etc.) are merged into their main item.',
