@@ -57,7 +57,6 @@
     min-height: 100vh;
   }
 
-  /* Top bar */
   .topbar {
     position: sticky;
     top: 0;
@@ -85,19 +84,9 @@
     flex-shrink: 0;
   }
 
-  .topbar-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text);
-  }
+  .topbar-title { font-size: 18px; font-weight: 700; color: var(--text); }
+  .topbar-sub { font-size: 12px; color: var(--muted); margin-top: 1px; }
 
-  .topbar-sub {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 1px;
-  }
-
-  /* Document area */
   .doc {
     max-width: 816px;
     margin: 24px auto;
@@ -109,118 +98,49 @@
     min-height: calc(100vh - 100px);
   }
 
-  @media (max-width: 900px) {
-    .doc { padding: 40px 28px 40px; margin: 12px; }
-  }
+  @media (max-width: 900px) { .doc { padding: 40px 28px 40px; margin: 12px; } }
 
-  /* Title */
-  .doc-title {
-    font-size: 2rem;
-    font-weight: 800;
-    text-align: center;
-    margin-bottom: 6px;
-    color: var(--text);
-  }
+  .doc-title { font-size: 2rem; font-weight: 800; text-align: center; margin-bottom: 6px; color: var(--text); }
+  .doc-subtitle { text-align: center; color: var(--muted); font-size: 0.95rem; margin-bottom: 40px; }
 
-  .doc-subtitle {
-    text-align: center;
-    color: var(--muted);
-    font-size: 0.95rem;
-    margin-bottom: 40px;
-  }
-
-  /* Table of contents */
-  .toc {
-    background: var(--toc-bg);
-    border-radius: 8px;
-    padding: 20px 28px;
-    margin-bottom: 48px;
-  }
-
-  .toc-title {
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--muted);
-    margin-bottom: 10px;
-  }
-
-  .toc a {
-    display: block;
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 0.92rem;
-    font-weight: 500;
-    padding: 4px 0;
-    transition: color 0.15s;
-  }
-
+  .toc { background: var(--toc-bg); border-radius: 8px; padding: 20px 28px; margin-bottom: 48px; }
+  .toc-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 10px; }
+  .toc a { display: block; color: var(--accent); text-decoration: none; font-size: 0.92rem; font-weight: 500; padding: 4px 0; transition: color 0.15s; }
   .toc a:hover { color: #174ea6; text-decoration: underline; }
 
-  /* Section headings */
   .section-heading {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-top: 48px;
-    margin-bottom: 8px;
-    padding-bottom: 10px;
-    border-bottom: 3px solid var(--heading-border);
-    scroll-margin-top: 80px;
+    font-size: 1.5rem; font-weight: 800; margin-top: 48px; margin-bottom: 8px;
+    padding-bottom: 10px; border-bottom: 3px solid var(--heading-border); scroll-margin-top: 80px;
   }
 
-  .section-desc {
-    color: var(--muted);
-    font-size: 0.9rem;
-    margin-bottom: 28px;
-    line-height: 1.6;
+  .sub-heading {
+    font-size: 1.1rem; font-weight: 700; margin-top: 28px; margin-bottom: 12px;
+    color: var(--muted); scroll-margin-top: 80px;
   }
 
-  /* Item row */
+  .section-desc { color: var(--muted); font-size: 0.9rem; margin-bottom: 28px; line-height: 1.6; }
+
   .item-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 18px;
-    padding: 18px 0;
+    display: flex; align-items: flex-start; gap: 18px; padding: 18px 0;
     border-bottom: 1px solid var(--item-border);
   }
-
   .item-row:last-child { border-bottom: none; }
 
   .item-img {
-    width: 72px;
-    height: 72px;
-    object-fit: contain;
-    border-radius: 10px;
-    background: var(--img-bg);
-    border: 1px solid var(--img-border);
-    padding: 6px;
-    flex-shrink: 0;
+    width: 72px; height: 72px; object-fit: contain; border-radius: 10px;
+    background: var(--img-bg); border: 1px solid var(--img-border); padding: 6px; flex-shrink: 0;
   }
 
-  .item-info {
-    flex: 1;
-    min-width: 0;
-  }
+  .item-info { flex: 1; min-width: 0; }
 
   .item-name {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 4px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
+    font-size: 1rem; font-weight: 700; margin-bottom: 4px;
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
   }
 
   .rarity-tag {
-    font-size: 0.68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    padding: 2px 10px;
-    border-radius: 999px;
-    white-space: nowrap;
+    font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.6px; padding: 2px 10px; border-radius: 999px; white-space: nowrap;
   }
 
   .rarity-Common    { background: rgba(100,116,139,0.1); color: var(--r-common); }
@@ -230,64 +150,28 @@
   .rarity-Mythic    { background: rgba(219,39,119,0.1);   color: var(--r-mythic); }
   .rarity-Unique    { background: rgba(8,145,178,0.1);    color: var(--r-unique); }
 
-  .item-desc {
-    font-size: 0.88rem;
-    color: var(--muted);
-    line-height: 1.55;
-    margin-top: 2px;
-  }
+  .item-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.55; margin-top: 2px; }
 
   .item-stat {
-    display: inline-block;
-    margin-top: 6px;
-    font-size: 0.82rem;
-    color: var(--muted);
-    background: var(--stat-bg);
-    padding: 2px 10px;
-    border-radius: 6px;
+    display: inline-block; margin-top: 6px; margin-right: 6px; font-size: 0.82rem;
+    color: var(--muted); background: var(--stat-bg); padding: 2px 10px; border-radius: 6px;
   }
+  .item-stat strong { color: var(--text); }
 
-  .item-stat strong {
-    color: var(--text);
-  }
+  hr.section-break { border: none; border-top: 1px solid var(--border); margin: 48px 0 0; }
 
-  /* Divider */
-  hr.section-break {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 48px 0 0;
-  }
-
-  /* Footer */
   .doc-footer {
-    text-align: center;
-    margin-top: 56px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-    color: #aaa;
-    font-size: 0.78rem;
+    text-align: center; margin-top: 56px; padding-top: 24px;
+    border-top: 1px solid var(--border); color: #aaa; font-size: 0.78rem;
   }
 
-  /* Dark mode toggle */
   .theme-toggle {
-    position: fixed;
-    bottom: 24px;
-    left: 24px;
-    z-index: 200;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 1px solid var(--border);
-    background: var(--doc-bg);
-    color: var(--text);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 8px var(--shadow);
-    transition: background 0.2s, color 0.2s, border-color 0.2s;
-    font-size: 20px;
-    line-height: 1;
+    position: fixed; bottom: 24px; left: 24px; z-index: 200;
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid var(--border); background: var(--doc-bg); color: var(--text);
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 8px var(--shadow); transition: background 0.2s, color 0.2s, border-color 0.2s;
+    font-size: 20px; line-height: 1;
   }
   .theme-toggle:hover { transform: scale(1.1); }
   .theme-toggle .icon-sun { display: none; }
@@ -295,10 +179,17 @@
   [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
   [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
-  /* Smooth transition */
   body, .topbar, .doc, .toc, .item-img, .item-stat, .theme-toggle {
     transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
   }
+
+  .loading { text-align: center; padding: 60px 0; color: var(--muted); font-size: 1rem; }
+  .loading-spinner {
+    width: 32px; height: 32px; border: 3px solid var(--border);
+    border-top-color: var(--accent); border-radius: 50%;
+    animation: spin 0.8s linear infinite; margin: 0 auto 16px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
 </style>
 </head>
 <body>
@@ -307,368 +198,14 @@
   <div class="topbar-icon">SO</div>
   <div>
     <div class="topbar-title">Survival Odyssey - Item Collection</div>
-    <div class="topbar-sub">Artifacts, Bags &amp; Satchels</div>
+    <div class="topbar-sub">Complete Item Database</div>
   </div>
 </div>
 
-<div class="doc">
-
+<div class="doc" id="doc">
   <h1 class="doc-title">Item Collection</h1>
-  <p class="doc-subtitle">A complete reference for Artifacts, Bags, and Satchels in Survival Odyssey</p>
-
-  <div class="toc">
-    <div class="toc-title">Contents</div>
-    <a href="#artifacts">1. Artifacts</a>
-    <a href="#bags">2. Bags</a>
-    <a href="#satchels">3. Satchels</a>
-  </div>
-
-  <!-- ════════════════════════ ARTIFACTS ════════════════════════ -->
-  <h2 class="section-heading" id="artifacts">1. Artifacts</h2>
-  <p class="section-desc">Artifacts are equipped on the left arm slot and provide passive effects. They persist through rebirths and cannot be dropped.</p>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-e22ef9a5adb7f85c588e9aa5e224aac0/150/150/Model/Png/noFilter" alt="Luck Artifact">
-    <div class="item-info">
-      <div class="item-name">Luck Artifact <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-desc">Grants 1.5x luck to drops</div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-ecb10e32ca9397e76a6b8bd0f2dd4ac1/150/150/Model/Png/noFilter" alt="Voodoo Artifact">
-    <div class="item-info">
-      <div class="item-name">Voodoo Artifact <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-desc">Increases voodoo gain by +1</div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-bed3468091c7c5cbfbd03527afc73662/150/150/Model/Png/noFilter" alt="Overheal Artifact">
-    <div class="item-info">
-      <div class="item-name">Overheal Artifact <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-desc">Grants faster healing</div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-d27b09675739192cac0fb70923078ef1/150/150/Model/Png/noFilter" alt="Hunger Artifact">
-    <div class="item-info">
-      <div class="item-name">Hunger Artifact <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-desc">Removes hunger loss</div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-578246e41868e6c97a1082f8a687c317/150/150/Model/Png/noFilter" alt="Health Artifact">
-    <div class="item-info">
-      <div class="item-name">Health Artifact <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-desc">Grants +20 Health</div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-7801213d23157191de02f0bc8105485c/150/150/Model/Png/noFilter" alt="Essence Artifact">
-    <div class="item-info">
-      <div class="item-name">Essence Artifact <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-desc">Increases essence gain by 1.15x</div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-1aa9c3217cab009ebb7294e96a8360a6/150/150/Model/Png/noFilter" alt="Coin Artifact">
-    <div class="item-info">
-      <div class="item-name">Coin Artifact <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-desc">Increases coin gain by 1.15x</div>
-    </div>
-  </div>
-  
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-336f47461bdb4bfbccc9fea40f731b17/150/150/Model/Png/noFilter" alt="Zombie Artifact">
-    <div class="item-info">
-      <div class="item-name">Zombie Artifact <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-desc">Increases total damage to players by 5% and total damage to mobs by 15%</div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-24f4067898939a25a79f96a9eb85325a/150/150/Model/Png/noFilter" alt="Serpent Artifact">
-    <div class="item-info">
-      <div class="item-name">Serpent Artifact <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-desc">Grants 1.5x movement speed while in water</div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-288ee495faff2df91b45d4660f00765d/150/150/Model/Png/noFilter" alt="Skeleton Artifact">
-    <div class="item-info">
-      <div class="item-name">Skeleton Artifact <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-desc">5% of damage taken by a player is returned to the player, 15% of damage taken by a mob is returned to the mob</div>
-    </div>
-  </div>
-  
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-5654be208459ce75dde1004abae83b9b/150/150/Model/Png/noFilter" alt="Rebirth Artifact">
-    <div class="item-info">
-      <div class="item-name">Rebirth Artifact <span class="rarity-tag rarity-Divine">Divine</span></div>
-      <div class="item-desc">Prevents death once and restores health back to 100</div>
-    </div>
-  </div>
-  
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-1fe88d53948cddc9816a2752adc3ea6f/150/150/Model/Png/noFilter" alt="Undead Artifact">
-    <div class="item-info">
-      <div class="item-name">Undead Artifact <span class="rarity-tag rarity-Divine">Divine</span></div>
-      <div class="item-desc">Mob damage reduced by 20%, loot luck increased by 10%</div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-e76a62ee14b0ae57eec391a3aafdf0b9/150/150/Model/Png/noFilter" alt="Bloodlust Artifact">
-    <div class="item-info">
-      <div class="item-name">Bloodlust Artifact <span class="rarity-tag rarity-Divine">Divine</span></div>
-      <div class="item-desc">25% chance to land a critical hit on mobs and a 2% chance to land a critical hit on players, critical hits deal 1.5x the damage</div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-53e142dc63cd4d6a9140e273aafc928a/150/150/Model/Png/noFilter" alt="Developer Artifact">
-    <div class="item-info">
-      <div class="item-name">Developer Artifact <span class="rarity-tag rarity-Unique">Unique</span></div>
-      <div class="item-desc">Does nothing at this current moment in time</div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-75f34e07adb0ae08b7c3a23cce50bdf6/150/150/Model/Png/noFilter" alt="Shrink Artifact">
-    <div class="item-info">
-      <div class="item-name">Shrink Artifact <span class="rarity-tag rarity-Unique">Unique</span></div>
-      <div class="item-desc">Reduces player size by 200%</div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-53e142dc63cd4d6a9140e273aafc928a/150/150/Model/Png/noFilter" alt="True Developer Artifact">
-    <div class="item-info">
-      <div class="item-name">True Developer Artifact <span class="rarity-tag rarity-Unique">Unique</span></div>
-      <div class="item-desc">All artifacts in one excluding divine artifacts</div>
-    </div>
-  </div>
-
-  <hr class="section-break">
-
-  <!-- ════════════════════════ BAGS ════════════════════════ -->
-  <h2 class="section-heading" id="bags">2. Bags</h2>
-  <p class="section-desc">Bags increase your inventory carrying capacity. Higher rarity bags offer significantly more max load.</p>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-71abc5be3730259437698c6f8934d3bd/150/150/Model/Png/noFilter" alt="Void Banto Bag">
-    <div class="item-info">
-      <div class="item-name">Void Banto Bag <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-stat">Max Load: <strong>30,000</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-72270b604d952d4c49bac500e4a0fbaa/150/150/Model/Png/noFilter" alt="Golden Banto Bag">
-    <div class="item-info">
-      <div class="item-name">Golden Banto Bag <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-stat">Max Load: <strong>35,000</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-9e97ecbbe0b567f43eb2e15792f2e33f/150/150/Model/Png/noFilter" alt="Bookshelf Bag">
-    <div class="item-info">
-      <div class="item-name">Bookshelf Bag <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-stat">Max Load: <strong>40,000</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-a9a7be508219f442475ee63d4c4f202d/150/150/Model/Png/noFilter" alt="Walrus Bag">
-    <div class="item-info">
-      <div class="item-name">Walrus Bag <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-stat">Max Load: <strong>45,000</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-4d085f720ff390fa65572e1193100f3a/150/150/Model/Png/noFilter" alt="Ghost Bag">
-    <div class="item-info">
-      <div class="item-name">Ghost Bag <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-stat">Max Load: <strong>50,000</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-4b3abf66e1f14cffd87b223e257886e8/150/150/Model/Png/noFilter" alt="Skeleton Bag">
-    <div class="item-info">
-      <div class="item-name">Skeleton Bag <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-stat">Max Load: <strong>45,000</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-470295c931dfbe44f3ca6c53e5c2e733/150/150/Model/Png/noFilter" alt="Pumpkin Bag">
-    <div class="item-info">
-      <div class="item-name">Pumpkin Bag <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-stat">Max Load: <strong>45,000</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-bb694aace28b7e7f48dc84d53584c97e/150/150/Model/Png/noFilter" alt="Zombie Bag">
-    <div class="item-info">
-      <div class="item-name">Zombie Bag <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-stat">Max Load: <strong>45,000</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-9732bb6bd372ec16a45dd7074b91f9ab/150/150/Model/Png/noFilter" alt="Serpent Bag">
-    <div class="item-info">
-      <div class="item-name">Serpent Bag <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-stat">Max Load: <strong>45,000</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-0b9baf4d206d489bbcb5d9ab0e6ce9f8/150/150/Model/Png/noFilter" alt="Develop Bag">
-    <div class="item-info">
-      <div class="item-name">Develop Bag <span class="rarity-tag rarity-Unique">Unique</span></div>
-      <div class="item-stat">Max Load: <strong>1,000,000</strong></div>
-    </div>
-    
-  </div>
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-301fbd0b20f90a00363239d4389579b7/150/150/Model/Png/noFilter" alt="Artist Bag">
-    <div class="item-info">
-      <div class="item-name">Artist Bag <span class="rarity-tag rarity-Unique">Unique</span></div>
-      <div class="item-stat">Max Load: <strong>2,000,000</strong></div>
-    </div>
-  </div>
-  
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-c0eea38e4016e7319a3a9138579c9613/150/150/Model/Png/noFilter" alt="Not The Shelly Bag">
-    <div class="item-info">
-      <div class="item-name">Not The Shelly Bag <span class="rarity-tag rarity-Unique">Unique</span></div>
-      <div class="item-stat">Max Load: <strong>&infin;</strong></div>
-    </div>
-  </div>
-
-  <hr class="section-break">
-
-  <!-- ════════════════════════ SATCHELS ════════════════════════ -->
-  <h2 class="section-heading" id="satchels">3. Satchels</h2>
-  <p class="section-desc">Satchels provide additional carrying capacity in a separate equipment slot from bags.</p>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-10899853582d1d2aa0db59a7157189c6/150/150/Model/Png/noFilter" alt="Tutorial Satchel">
-    <div class="item-info">
-      <div class="item-name">Tutorial Satchel <span class="rarity-tag rarity-Common">Common</span></div>
-      <div class="item-stat">Max Load: <strong>9,000</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-ca427a193958d3586ace2c18063eb10f/150/150/Model/Png/noFilter" alt="Amethyst Satchel">
-    <div class="item-info">
-      <div class="item-name">Amethyst Satchel <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-stat">Max Load: <strong>20,000</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-f0c92e0eacf1e6e0f33b162f367ac3f5/150/150/Model/Png/noFilter" alt="Evil Satchel">
-    <div class="item-info">
-      <div class="item-name">Evil Satchel <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-stat">Max Load: <strong>22,500</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-3e8d4743db59eed5725bd7f2e3bf2611/150/150/Model/Png/noFilter" alt="Transcendant Satchel">
-    <div class="item-info">
-      <div class="item-name">Transcendant Satchel <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-stat">Max Load: <strong>25,000</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-62dce2286cc3aa8f192ab31e40d96a20/150/150/Model/Png/noFilter" alt="Kitty Satchel">
-    <div class="item-info">
-      <div class="item-name">Kitty Satchel <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-stat">Max Load: <strong>27,500</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-13f9bb5c31a01b2cb0a04c83ba9a1ffa/150/150/Model/Png/noFilter" alt="Bookshelf Satchel">
-    <div class="item-info">
-      <div class="item-name">Bookshelf Satchel <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-stat">Max Load: <strong>30,000</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-b1daaab952ab000432712156b592a6f8/150/150/Model/Png/noFilter" alt="Ghost Satchel">
-    <div class="item-info">
-      <div class="item-name">Ghost Satchel <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-stat">Max Load: <strong>32,500</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-49468978406d7cab559540b1d817e9fd/150/150/Model/Png/noFilter" alt="Skeleton Satchel">
-    <div class="item-info">
-      <div class="item-name">Skeleton Satchel <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-stat">Max Load: <strong>30,000</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-d5315339420acd553619f235bc157881/150/150/Model/Png/noFilter" alt="Pumpkin Satchel">
-    <div class="item-info">
-      <div class="item-name">Pumpkin Satchel <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-stat">Max Load: <strong>30,000</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-b6a12fdaec9be16be888eb458405d7ba/150/150/Model/Png/noFilter" alt="Serpent Satchel">
-    <div class="item-info">
-      <div class="item-name">Serpent Satchel <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-stat">Max Load: <strong>30,000</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-4cf1d5231be70488895b5b097eafec93/150/150/Model/Png/noFilter" alt="Zombie Satchel">
-    <div class="item-info">
-      <div class="item-name">Zombie Satchel <span class="rarity-tag rarity-Mythic">Mythic</span></div>
-      <div class="item-stat">Max Load: <strong>30,000</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-bc72dfab73ead0b067962c9f432198a9/150/150/Model/Png/noFilter" alt="Develop Satchel">
-    <div class="item-info">
-      <div class="item-name">Develop Satchel <span class="rarity-tag rarity-Unique">Unique</span></div>
-      <div class="item-stat">Max Load: <strong>900,000</strong></div>
-    </div>
-  </div>
-
-  <div class="item-row">
-    <img class="item-img" src="https://tr.rbxcdn.com/180DAY-b3f7db8c6f62feb76c487946a9b37e86/150/150/Model/Png/noFilter" alt="Administor Satchel">
-    <div class="item-info">
-      <div class="item-name">Administor Satchel <span class="rarity-tag rarity-Unique">Unique</span></div>
-      <div class="item-stat">Max Load: <strong>2,000,000</strong></div>
-    </div>
-  </div>
-
-  <div class="doc-footer">Survival Odyssey Item Collection</div>
-
+  <p class="doc-subtitle">A complete reference for all items in Survival Odyssey</p>
+  <div class="loading"><div class="loading-spinner"></div>Loading item data...</div>
 </div>
 
 <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">
@@ -677,17 +214,289 @@
 </button>
 
 <script>
-  function toggleTheme() {
-    const html = document.documentElement;
-    const isDark = html.getAttribute('data-theme') === 'dark';
-    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    localStorage.setItem('so-theme', isDark ? 'light' : 'dark');
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('so-theme', isDark ? 'light' : 'dark');
+}
+const saved = localStorage.getItem('so-theme');
+if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  document.documentElement.setAttribute('data-theme', 'dark');
+}
+
+// ══════════════ CONFIG ══════════════
+// Replace this with your raw GitHub URL to the JSON file
+const JSON_URL = 'ReplicatedStorage_18629053284.json';
+// Base path to the images folder in your repo (relative or absolute)
+const IMAGES_BASE = 'images';
+
+// ══════════════ THUMBNAIL FETCHER ══════════════
+const thumbCache = {};
+
+async function fetchThumbnails(assetIds) {
+  const unique = [...new Set(assetIds.filter(id => id && !thumbCache[id]))];
+  const batches = [];
+  for (let i = 0; i < unique.length; i += 100) {
+    batches.push(unique.slice(i, i + 100));
   }
-  // Load saved preference
-  const saved = localStorage.getItem('so-theme');
-  if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.setAttribute('data-theme', 'dark');
+  for (const batch of batches) {
+    try {
+      const url = `https://thumbnails.roblox.com/v1/assets?assetIds=${batch.join(',')}&size=420x420&format=Png`;
+      const res = await fetch(url);
+      const json = await res.json();
+      for (const entry of json.data || []) {
+        if (entry.state === 'Completed' && entry.imageUrl) {
+          thumbCache[entry.targetId] = entry.imageUrl;
+        }
+      }
+    } catch (e) {
+      console.warn('Thumbnail batch failed:', e);
+    }
   }
+}
+
+function getThumb(assetId) {
+  return thumbCache[assetId] || `https://www.roblox.com/asset-thumbnail/image?assetId=${assetId}&width=420&height=420&format=png`;
+}
+
+// ══════════════ MERGE ARMOR PIECES ══════════════
+const BODY_SUFFIXES = [
+  ' Bottom Left Leg', ' Bottom Right Leg',
+  ' Left Foot', ' Right Foot', ' Left Leg', ' Right Leg',
+  ' Left Shoulder', ' Right Shoulder',
+  ' Left Arm', ' Right Arm', ' Lower Torso',
+];
+
+function getBaseName(name) {
+  let n = name;
+  for (const suffix of BODY_SUFFIXES) {
+    if (n.endsWith(suffix)) {
+      n = n.slice(0, -suffix.length);
+      break;
+    }
+  }
+  return n;
+}
+
+function mergeItems(items) {
+  const groups = {};
+  for (const item of items) {
+    const base = getBaseName(item.name);
+    if (!groups[base]) {
+      groups[base] = { ...item, name: base, _pieces: [item.name], _origName: item.name };
+    } else {
+      groups[base]._pieces.push(item.name);
+      // keep the asset ID that isn't a generic fallback, prefer the first valid one
+      if (!groups[base].assetId && item.assetId) {
+        groups[base].assetId = item.assetId;
+        groups[base]._origName = item.name;
+      }
+      // keep highest protection/health values
+      if (item.protection && (!groups[base].protection || item.protection > groups[base].protection)) {
+        groups[base].protection = item.protection;
+      }
+      if (item.health && (!groups[base].health || item.health > groups[base].health)) {
+        groups[base].health = item.health;
+      }
+    }
+  }
+  return Object.values(groups);
+}
+
+// ══════════════ COLLECT ALL ASSET IDS ══════════════
+function collectAssetIds(data) {
+  const ids = [];
+  function walk(obj) {
+    if (Array.isArray(obj)) {
+      for (const item of obj) {
+        if (item && item.assetId) ids.push(String(item.assetId));
+      }
+    } else if (obj && typeof obj === 'object') {
+      for (const key of Object.keys(obj)) walk(obj[key]);
+    }
+  }
+  walk(data);
+  return ids;
+}
+
+// ══════════════ FORMAT HELPERS ══════════════
+function formatNum(n) {
+  if (n === null || n === undefined) return null;
+  if (typeof n === 'string') {
+    if (n === 'Infinity' || n === 'inf') return '∞';
+    n = Number(n);
+  }
+  if (!isFinite(n)) return '∞';
+  return n.toLocaleString();
+}
+
+function buildStatTags(item) {
+  const stats = [];
+  if (item.protection != null) stats.push(`Protection: <strong>${formatNum(item.protection)}</strong>`);
+  if (item.health != null) stats.push(`Health: <strong>${formatNum(item.health)}</strong>`);
+  if (item.maxLoad != null) stats.push(`Max Load: <strong>${formatNum(item.maxLoad)}</strong>`);
+  if (item.wood != null) stats.push(`Wood: <strong>${item.wood}</strong>`);
+  if (item.stone != null) stats.push(`Stone: <strong>${item.stone}</strong>`);
+  if (item.woodStructure != null) stats.push(`WoodStr: <strong>${item.woodStructure}</strong>`);
+  if (item.stoneStructure != null) stats.push(`StoneStr: <strong>${item.stoneStructure}</strong>`);
+  if (item.players != null) stats.push(`Players: <strong>${item.players}</strong>`);
+  if (item.mobs != null) stats.push(`Mobs: <strong>${item.mobs}</strong>`);
+  if (item.spirit != null) stats.push(`Spirit: <strong>${item.spirit}</strong>`);
+  if (item.speed != null) stats.push(`Speed: <strong>${Number(item.speed).toFixed(2)}</strong>`);
+  return stats.map(s => `<span class="item-stat">${s}</span>`).join('');
+}
+
+function buildItemRow(item, imgOverride) {
+  const imgSrc = imgOverride || (item.assetId ? getThumb(item.assetId) : '');
+  const imgHtml = imgSrc
+    ? `<img class="item-img" src="${imgSrc}" alt="${item.name}" loading="lazy" onerror="this.style.display='none'">`
+    : `<div class="item-img" style="display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--muted);">No img</div>`;
+  const statsHtml = buildStatTags(item);
+  return `<div class="item-row">
+    ${imgHtml}
+    <div class="item-info">
+      <div class="item-name">${item.name}</div>
+      ${statsHtml ? `<div>${statsHtml}</div>` : ''}
+    </div>
+  </div>`;
+}
+
+// ══════════════ RENDER SECTIONS ══════════════
+function getArmorImageUrl(item, category) {
+  // Use local repo image: images/{category}/{PieceName}_{assetId}.png
+  const fileName = item._origName || item.name;
+  const id = item.assetId;
+  if (id) {
+    return `${IMAGES_BASE}/${encodeURIComponent(category)}/${encodeURIComponent(fileName)}_${id}.png`;
+  }
+  return '';
+}
+
+function renderCategorizedSection(container, num, id, title, desc, catData, shouldMerge, useLocalImages) {
+  let html = `<h2 class="section-heading" id="${id}">${num}. ${title}</h2>`;
+  html += `<p class="section-desc">${desc}</p>`;
+
+  const sortedCats = Object.keys(catData).sort();
+  for (const cat of sortedCats) {
+    let items = catData[cat];
+    if (shouldMerge) items = mergeItems(items);
+    items.sort((a, b) => a.name.localeCompare(b.name));
+    html += `<h3 class="sub-heading">${cat}</h3>`;
+    for (const item of items) {
+      const imgUrl = useLocalImages ? getArmorImageUrl(item, cat) : undefined;
+      html += buildItemRow(item, imgUrl);
+    }
+  }
+  html += `<hr class="section-break">`;
+  container.insertAdjacentHTML('beforeend', html);
+}
+
+function renderFlatSection(container, num, id, title, desc, items) {
+  let html = `<h2 class="section-heading" id="${id}">${num}. ${title}</h2>`;
+  html += `<p class="section-desc">${desc}</p>`;
+
+  const sorted = [...items].sort((a, b) => a.name.localeCompare(b.name));
+  for (const item of sorted) {
+    html += buildItemRow(item);
+  }
+  html += `<hr class="section-break">`;
+  container.insertAdjacentHTML('beforeend', html);
+}
+
+// ══════════════ MAIN ══════════════
+async function main() {
+  const doc = document.getElementById('doc');
+
+  // Fetch JSON
+  let text;
+  try {
+    const res = await fetch(JSON_URL);
+    text = await res.text();
+  } catch (e) {
+    doc.innerHTML = `<h1 class="doc-title">Error</h1><p class="section-desc">Failed to load JSON: ${e.message}</p>`;
+    return;
+  }
+
+  // Handle Lua inf values that aren't valid JSON
+  text = text.replace(/:\s*inf\b/g, ': "Infinity"');
+  text = text.replace(/:\s*-inf\b/g, ': "-Infinity"');
+
+  let data;
+  try {
+    data = JSON.parse(text);
+  } catch (e) {
+    doc.innerHTML = `<h1 class="doc-title">Error</h1><p class="section-desc">Failed to parse JSON: ${e.message}</p>`;
+    return;
+  }
+
+  // Separate Bags and Satchels from Armor
+  const armor = data.Armor || {};
+  const bags = armor.Bag || [];
+  const satchels = armor.Satchels || [];
+  const armorSets = {};
+  for (const key of Object.keys(armor)) {
+    if (key !== 'Bag' && key !== 'Satchels') {
+      armorSets[key] = armor[key];
+    }
+  }
+
+  const tools = data.Tools || {};
+  const deployables = data.Deployables || [];
+  const projectiles = data.Projectiles || [];
+
+  // Collect all asset IDs and prefetch thumbnails
+  const allIds = collectAssetIds(data);
+  await fetchThumbnails(allIds);
+
+  // Clear loading state
+  doc.innerHTML = `<h1 class="doc-title">Item Collection</h1>
+    <p class="doc-subtitle">A complete reference for all items in Survival Odyssey &mdash; ${allIds.length} items</p>`;
+
+  // Build TOC
+  const sections = [
+    { id: 'tools', label: 'Tools' },
+    { id: 'armor', label: 'Armor Sets' },
+    { id: 'bags', label: 'Bags' },
+    { id: 'satchels', label: 'Satchels' },
+    { id: 'deployables', label: 'Deployables' },
+    { id: 'projectiles', label: 'Projectiles' },
+  ];
+
+  let tocHtml = `<div class="toc"><div class="toc-title">Contents</div>`;
+  sections.forEach((s, i) => { tocHtml += `<a href="#${s.id}">${i+1}. ${s.label}</a>`; });
+  tocHtml += `</div>`;
+  doc.insertAdjacentHTML('beforeend', tocHtml);
+
+  // Render each section
+  renderCategorizedSection(doc, 1, 'tools', 'Tools',
+    'Tools include axes, pickaxes, swords, bows, and more. Stats show damage values and speed.',
+    tools, false, false);
+
+  renderCategorizedSection(doc, 2, 'armor', 'Armor Sets',
+    'Armor is worn for protection. Piece variants (greaves, shoulders, etc.) are merged into their main item.',
+    armorSets, true, true);
+
+  renderFlatSection(doc, 3, 'bags', 'Bags',
+    'Bags increase your inventory carrying capacity.',
+    bags);
+
+  renderFlatSection(doc, 4, 'satchels', 'Satchels',
+    'Satchels provide additional carrying capacity in a separate equipment slot from bags.',
+    satchels);
+
+  renderFlatSection(doc, 5, 'deployables', 'Deployables',
+    'Deployable structures and items that can be placed in the world.',
+    deployables);
+
+  renderFlatSection(doc, 6, 'projectiles', 'Projectiles',
+    'Ammunition and throwable projectiles.',
+    projectiles);
+
+  doc.insertAdjacentHTML('beforeend', `<div class="doc-footer">Survival Odyssey Item Collection &mdash; Auto-generated from game data</div>`);
+}
+
+main();
 </script>
 
 </body>
