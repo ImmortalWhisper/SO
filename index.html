@@ -261,28 +261,33 @@ function getThumb(assetId) {
 }
 
 // ══════════════ MERGE ARMOR PIECES ══════════════
-const ARMOR_SUFFIXES = [
-  // Body parts only (longest first to match greedily)
-  ' Bottom Left Leg', ' Bottom Right Leg',
-  ' Left Foot', ' Right Foot', ' Left Leg', ' Right Leg',
-  ' Left Shoulder', ' Right Shoulder',
-  ' Left Arm', ' Right Arm', ' Lower Torso',
+// Maps body-part suffixes to what they should merge INTO
+// e.g. "Crystal Left Shoulder" → "Crystal" + " Chestplate" = "Crystal Chestplate"
+const ARMOR_SUFFIX_MAP = [
+  // Shoulders → Chestplate
+  { suffix: ' Left Shoulder', replace: ' Chestplate' },
+  { suffix: ' Right Shoulder', replace: ' Chestplate' },
+  // Feet/Legs → Greaves
+  { suffix: ' Bottom Left Leg', replace: ' Greaves' },
+  { suffix: ' Bottom Right Leg', replace: ' Greaves' },
+  { suffix: ' Left Foot', replace: ' Greaves' },
+  { suffix: ' Right Foot', replace: ' Greaves' },
+  { suffix: ' Left Leg', replace: ' Greaves' },
+  { suffix: ' Right Leg', replace: ' Greaves' },
+  // Arms → Gauntlets
+  { suffix: ' Left Arm', replace: ' Gauntlets' },
+  { suffix: ' Right Arm', replace: ' Gauntlets' },
+  // Lower Torso → Chestplate
+  { suffix: ' Lower Torso', replace: ' Chestplate' },
 ];
 
 function getBaseName(name) {
-  let n = name;
-  let changed = true;
-  while (changed) {
-    changed = false;
-    for (const suffix of ARMOR_SUFFIXES) {
-      if (n.endsWith(suffix)) {
-        n = n.slice(0, -suffix.length);
-        changed = true;
-        break;
-      }
+  for (const { suffix, replace } of ARMOR_SUFFIX_MAP) {
+    if (name.endsWith(suffix)) {
+      return name.slice(0, -suffix.length) + replace;
     }
   }
-  return n;
+  return name;
 }
 
 function mergeItems(items) {
