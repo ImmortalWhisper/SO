@@ -358,7 +358,7 @@ function buildStatTags(item) {
 function buildItemRow(item, imgOverride) {
   const imgSrc = imgOverride || (item.assetId ? getThumb(item.assetId) : '');
   const imgHtml = imgSrc
-    ? `<img class="item-img" src="${imgSrc}" alt="${item.name}" loading="lazy" onerror="this.style.display='none'">`
+    ? `<img class="item-img" src="${imgSrc}" alt="${item.name}" loading="lazy" onerror="this.closest('.item-row').remove()">`
     : `<div class="item-img" style="display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--muted);">No img</div>`;
   const statsHtml = buildStatTags(item);
   return `<div class="item-row">
