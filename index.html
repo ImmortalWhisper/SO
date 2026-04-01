@@ -229,7 +229,7 @@ if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dar
 // Replace this with your raw GitHub URL to the JSON file
 const JSON_URL = 'https://raw.githubusercontent.com/ImmortalWhisper/SO/refs/heads/main/ReplicatedStorage_18629053284.json';
 // Base path to the images folder in your repo (relative or absolute)
-const IMAGES_BASE = 'images';
+const IMAGES_BASE = 'Images';
 
 // ══════════════ THUMBNAIL FETCHER ══════════════
 const thumbCache = {};
@@ -362,18 +362,37 @@ function buildItemRow(item, imgOverride) {
   </div>`;
 }
 
-// ══════════════ RENDER SECTIONS ══════════════
+// ══════════════ IMAGE URL HELPERS ══════════════
+// Armor: Images/{Category}/{PieceName}_{assetId}.png
 function getArmorImageUrl(item, category) {
-  // Use local repo image: images/{category}/{PieceName}_{assetId}.png
   const fileName = item._origName || item.name;
   const id = item.assetId;
-  if (id) {
-    return `${IMAGES_BASE}/${encodeURIComponent(category)}/${encodeURIComponent(fileName)}_${id}.png`;
-  }
+  if (id) return `${IMAGES_BASE}/${encodeURIComponent(category)}/${encodeURIComponent(fileName)}_${id}.png`;
   return '';
 }
 
-function renderCategorizedSection(container, num, id, title, desc, catData, shouldMerge, useLocalImages) {
+// Tools: Images/Tools/{Category}/{Name}_{assetId}.png
+function getToolImageUrl(item, category) {
+  const id = item.assetId;
+  if (id) return `${IMAGES_BASE}/Tools/${encodeURIComponent(category)}/${encodeURIComponent(item.name)}_${id}.png`;
+  return '';
+}
+
+// Deployables: Images/Deployables/{Name}_{assetId}.png
+function getDeployableImageUrl(item) {
+  const id = item.assetId;
+  if (id) return `${IMAGES_BASE}/Deployables/${encodeURIComponent(item.name)}_${id}.png`;
+  return '';
+}
+
+// Projectiles: Images/Projectiles/{Name}_{assetId}.png
+function getProjectileImageUrl(item) {
+  const id = item.assetId;
+  if (id) return `${IMAGES_BASE}/Projectiles/${encodeURIComponent(item.name)}_${id}.png`;
+  return '';
+}
+
+function renderCategorizedSection(container, num, id, title, desc, catData, shouldMerge, imgFn) {
   let html = `<h2 class="section-heading" id="${id}">${num}. ${title}</h2>`;
   html += `<p class="section-desc">${desc}</p>`;
 
@@ -384,7 +403,7 @@ function renderCategorizedSection(container, num, id, title, desc, catData, shou
     items.sort((a, b) => a.name.localeCompare(b.name));
     html += `<h3 class="sub-heading">${cat}</h3>`;
     for (const item of items) {
-      const imgUrl = useLocalImages ? getArmorImageUrl(item, cat) : undefined;
+      const imgUrl = imgFn ? imgFn(item, cat) : undefined;
       html += buildItemRow(item, imgUrl);
     }
   }
@@ -392,13 +411,14 @@ function renderCategorizedSection(container, num, id, title, desc, catData, shou
   container.insertAdjacentHTML('beforeend', html);
 }
 
-function renderFlatSection(container, num, id, title, desc, items) {
+function renderFlatSection(container, num, id, title, desc, items, imgFn) {
   let html = `<h2 class="section-heading" id="${id}">${num}. ${title}</h2>`;
   html += `<p class="section-desc">${desc}</p>`;
 
   const sorted = [...items].sort((a, b) => a.name.localeCompare(b.name));
   for (const item of sorted) {
-    html += buildItemRow(item);
+    const imgUrl = imgFn ? imgFn(item) : undefined;
+    html += buildItemRow(item, imgUrl);
   }
   html += `<hr class="section-break">`;
   container.insertAdjacentHTML('beforeend', html);
@@ -459,11 +479,11 @@ async function renderData(data) {
   // Render each section
   renderCategorizedSection(doc, 1, 'tools', 'Tools',
     'Tools include axes, pickaxes, swords, bows, and more. Stats show damage values and speed.',
-    tools, false, false);
+    tools, false, getToolImageUrl);
 
   renderCategorizedSection(doc, 2, 'armor', 'Armor Sets',
     'Armor is worn for protection. Piece variants (greaves, shoulders, etc.) are merged into their main item.',
-    armorSets, true, true);
+    armorSets, true, getArmorImageUrl);
 
   renderFlatSection(doc, 3, 'bags', 'Bags',
     'Bags increase your inventory carrying capacity.',
@@ -475,11 +495,11 @@ async function renderData(data) {
 
   renderFlatSection(doc, 5, 'deployables', 'Deployables',
     'Deployable structures and items that can be placed in the world.',
-    deployables);
+    deployables, getDeployableImageUrl);
 
   renderFlatSection(doc, 6, 'projectiles', 'Projectiles',
     'Ammunition and throwable projectiles.',
-    projectiles);
+    projectiles, getProjectileImageUrl);
 
   doc.insertAdjacentHTML('beforeend', `<div class="doc-footer">${gameName} Item Collection &mdash; Auto-generated from game data</div>`);
 }
