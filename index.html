@@ -252,7 +252,7 @@ if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dar
 // Replace this with your raw GitHub URL to the JSON file
 const JSON_URL = 'https://raw.githubusercontent.com/ImmortalWhisper/SO/refs/heads/main/ReplicatedStorage_18629053284.json';
 // Base path to the images folder in your repo (relative or absolute)
-const IMAGES_BASE = 'Images';
+const IMAGES_BASE = 'https://raw.githubusercontent.com/ImmortalWhisper/SO/refs/heads/main/Images';
 
 // ══════════════ THUMBNAIL FETCHER ══════════════
 const thumbCache = {};
@@ -425,6 +425,20 @@ function getProjectileImageUrl(item) {
   return '';
 }
 
+// Bags: Images/Bag/{Name}_{assetId}.png
+function getBagImageUrl(item) {
+  const id = item.assetId;
+  if (id) return `${IMAGES_BASE}/Bag/${encodeURIComponent(item.name)}_${id}.png`;
+  return '';
+}
+
+// Satchels: Images/Satchels/{Name}_{assetId}.png
+function getSatchelImageUrl(item) {
+  const id = item.assetId;
+  if (id) return `${IMAGES_BASE}/Satchels/${encodeURIComponent(item.name)}_${id}.png`;
+  return '';
+}
+
 function renderCategorizedSection(container, num, id, title, desc, catData, shouldMerge, imgFn) {
   let hasAnyItems = false;
   let html = `<div class="section-block" data-section-id="${id}">`;
@@ -556,11 +570,11 @@ async function renderData(data) {
 
   renderFlatSection(doc, 3, 'bags', 'Bags',
     'Bags increase your inventory carrying capacity.',
-    bags);
+    bags, getBagImageUrl);
 
   renderFlatSection(doc, 4, 'satchels', 'Satchels',
     'Satchels provide additional carrying capacity in a separate equipment slot from bags.',
-    satchels);
+    satchels, getSatchelImageUrl);
 
   renderFlatSection(doc, 5, 'deployables', 'Deployables',
     'Deployable structures and items that can be placed in the world.',
