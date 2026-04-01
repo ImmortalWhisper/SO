@@ -605,24 +605,15 @@ async function renderData(data) {
 }
 
 // Remove item row when image fails, then clean up empty parents
-let _pendingErrors = 0;
-let _cleanupScheduled = false;
+let _cleanupTimer = null;
 function onItemImgError(img) {
   const row = img.closest('.item-row');
-  if (row) row.style.display = 'none'; // hide immediately but don't remove yet
-  _pendingErrors++;
-  if (!_cleanupScheduled) {
-    _cleanupScheduled = true;
-    // Wait for all image loads/errors to settle before removing rows
-    setTimeout(() => {
-      document.querySelectorAll('.item-row').forEach(r => {
-        if (r.style.display === 'none') r.remove();
-      });
-      cleanupEmptySections();
-      _cleanupScheduled = false;
-      _pendingErrors = 0;
-    }, 2000);
-  }
+  if (row) row.remove(); // remove immediately to prevent layout shifts
+  // Debounce the section cleanup (short delay, resets on each new error)
+  clearTimeout(_cleanupTimer);
+  _cleanupTimer = setTimeout(() => {
+    cleanupEmptySections();
+  }, 150);
 }
 
 function cleanupEmptySections() {
