@@ -355,9 +355,8 @@ function buildStatTags(item) {
 
 function buildItemRow(item, imgOverride) {
   const imgSrc = imgOverride || (item.assetId ? getThumb(item.assetId) : '');
-  const imgHtml = imgSrc
-    ? `<img class="item-img" src="${imgSrc}" alt="${item.name}" loading="lazy" onerror="this.closest('.item-row').remove()">`
-    : `<div class="item-img" style="display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--muted);">No img</div>`;
+  if (!imgSrc) return ''; // skip items with no image
+  const imgHtml = `<img class="item-img" src="${imgSrc}" alt="${item.name}" loading="lazy" onerror="onItemImgError(this)">`;
   const statsHtml = buildStatTags(item);
   return `<div class="item-row">
     ${imgHtml}
@@ -399,7 +398,9 @@ function getProjectileImageUrl(item) {
 }
 
 function renderCategorizedSection(container, num, id, title, desc, catData, shouldMerge, imgFn) {
-  let html = `<h2 class="section-heading" id="${id}">${num}. ${title}</h2>`;
+  let hasAnyItems = false;
+  let html = `<div class="section-block" data-section-id="${id}">`;
+  html += `<h2 class="section-heading" id="${id}">${num}. ${title}</h2>`;
   html += `<p class="section-desc">${desc}</p>`;
 
   const sortedCats = Object.keys(catData).sort();
@@ -407,27 +408,34 @@ function renderCategorizedSection(container, num, id, title, desc, catData, shou
     let items = catData[cat];
     if (shouldMerge) items = mergeItems(items);
     items.sort((a, b) => a.name.localeCompare(b.name));
-    html += `<h3 class="sub-heading">${cat}</h3>`;
+    let catHtml = '';
     for (const item of items) {
       const imgUrl = imgFn ? imgFn(item, cat) : undefined;
-      html += buildItemRow(item, imgUrl);
+      catHtml += buildItemRow(item, imgUrl);
+    }
+    if (catHtml) {
+      html += `<div class="sub-block"><h3 class="sub-heading">${cat}</h3>${catHtml}</div>`;
+      hasAnyItems = true;
     }
   }
-  html += `<hr class="section-break">`;
-  container.insertAdjacentHTML('beforeend', html);
+  html += `<hr class="section-break"></div>`;
+  if (hasAnyItems) container.insertAdjacentHTML('beforeend', html);
 }
 
 function renderFlatSection(container, num, id, title, desc, items, imgFn) {
-  let html = `<h2 class="section-heading" id="${id}">${num}. ${title}</h2>`;
+  let html = `<div class="section-block" data-section-id="${id}">`;
+  html += `<h2 class="section-heading" id="${id}">${num}. ${title}</h2>`;
   html += `<p class="section-desc">${desc}</p>`;
 
+  let hasItems = false;
   const sorted = [...items].sort((a, b) => a.name.localeCompare(b.name));
   for (const item of sorted) {
     const imgUrl = imgFn ? imgFn(item) : undefined;
-    html += buildItemRow(item, imgUrl);
+    const row = buildItemRow(item, imgUrl);
+    if (row) { html += row; hasItems = true; }
   }
-  html += `<hr class="section-break">`;
-  container.insertAdjacentHTML('beforeend', html);
+  html += `<hr class="section-break"></div>`;
+  if (hasItems) container.insertAdjacentHTML('beforeend', html);
 }
 
 // ══════════════ JSON PARSING ══════════════
@@ -508,6 +516,39 @@ async function renderData(data) {
     projectiles, getProjectileImageUrl);
 
   doc.insertAdjacentHTML('beforeend', `<div class="doc-footer">${gameName} Item Collection &mdash; Auto-generated from game data</div>`);
+
+  // After a delay for images to load/error, clean up empty sections and TOC
+  cleanupEmptySections();
+}
+
+// Remove item row when image fails, then clean up empty parents
+function onItemImgError(img) {
+  const row = img.closest('.item-row');
+  if (row) row.remove();
+  // Debounce cleanup
+  clearTimeout(window._cleanupTimer);
+  window._cleanupTimer = setTimeout(cleanupEmptySections, 300);
+}
+
+function cleanupEmptySections() {
+  // Remove empty sub-blocks (no .item-row children left)
+  document.querySelectorAll('.sub-block').forEach(sub => {
+    if (!sub.querySelector('.item-row')) sub.remove();
+  });
+  // Remove empty section blocks (no .item-row children left)
+  document.querySelectorAll('.section-block').forEach(block => {
+    if (!block.querySelector('.item-row')) block.remove();
+  });
+  // Update TOC: remove links to sections that no longer exist
+  document.querySelectorAll('.toc a').forEach(link => {
+    const targetId = link.getAttribute('href')?.replace('#', '');
+    if (targetId && !document.getElementById(targetId)) {
+      link.remove();
+    }
+  });
+  // If TOC is empty, remove it entirely
+  const toc = document.querySelector('.toc');
+  if (toc && !toc.querySelector('a')) toc.remove();
 }
 
 // ══════════════ FILE PICKER FALLBACK ══════════════
