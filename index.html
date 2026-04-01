@@ -262,13 +262,11 @@ function getThumb(assetId) {
 
 // ══════════════ MERGE ARMOR PIECES ══════════════
 const ARMOR_SUFFIXES = [
-  // Body parts (longest first to match greedily)
+  // Body parts only (longest first to match greedily)
   ' Bottom Left Leg', ' Bottom Right Leg',
   ' Left Foot', ' Right Foot', ' Left Leg', ' Right Leg',
   ' Left Shoulder', ' Right Shoulder',
   ' Left Arm', ' Right Arm', ' Lower Torso',
-  // Armor piece types
-  ' Chestplate', ' Helmet', ' Greaves', ' Gauntlets', ' Boots',
 ];
 
 function getBaseName(name) {
