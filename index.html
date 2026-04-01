@@ -90,6 +90,7 @@
   .doc {
     max-width: 816px;
     margin: 24px auto;
+    margin-left: 244px;
     background: var(--doc-bg);
     border: 1px solid var(--border);
     border-radius: 4px;
@@ -98,15 +99,39 @@
     min-height: calc(100vh - 100px);
   }
 
-  @media (max-width: 900px) { .doc { padding: 40px 28px 40px; margin: 12px; } }
+  @media (max-width: 1100px) {
+    .toc { width: 180px; }
+    .doc { margin-left: 204px; }
+  }
+
+  @media (max-width: 900px) {
+    .toc { display: none; }
+    .doc { padding: 40px 28px 40px; margin: 12px; }
+  }
 
   .doc-title { font-size: 2rem; font-weight: 800; text-align: center; margin-bottom: 6px; color: var(--text); }
   .doc-subtitle { text-align: center; color: var(--muted); font-size: 0.95rem; margin-bottom: 40px; }
 
-  .toc { background: var(--toc-bg); border-radius: 8px; padding: 20px 28px; margin-bottom: 48px; }
+  .toc {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 220px;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    background: var(--toc-bg);
+    border-right: 1px solid var(--border);
+    padding: 20px 16px;
+    z-index: 90;
+    box-shadow: 2px 0 6px var(--shadow);
+  }
   .toc-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 10px; }
-  .toc a { display: block; color: var(--accent); text-decoration: none; font-size: 0.92rem; font-weight: 500; padding: 4px 0; transition: color 0.15s; }
-  .toc a:hover { color: #174ea6; text-decoration: underline; }
+  .toc a {
+    display: block; color: var(--accent); text-decoration: none; font-size: 0.85rem;
+    font-weight: 500; padding: 6px 10px; border-radius: 6px; transition: background 0.15s, color 0.15s;
+  }
+  .toc a:hover { background: var(--border); text-decoration: none; }
+  .toc a.active { background: var(--accent); color: #fff; font-weight: 600; }
 
   .section-heading {
     font-size: 1.5rem; font-weight: 800; margin-top: 48px; margin-bottom: 8px;
@@ -490,10 +515,37 @@ async function renderData(data) {
     { id: 'projectiles', label: 'Projectiles' },
   ];
 
-  let tocHtml = `<div class="toc"><div class="toc-title">Contents</div>`;
-  sections.forEach((s, i) => { tocHtml += `<a href="#${s.id}">${i+1}. ${s.label}</a>`; });
-  tocHtml += `</div>`;
-  doc.insertAdjacentHTML('beforeend', tocHtml);
+  // Build TOC as a fixed sidebar outside .doc
+  let existingToc = document.querySelector('.toc');
+  if (existingToc) existingToc.remove();
+  let tocEl = document.createElement('div');
+  tocEl.className = 'toc';
+  let tocInner = `<div class="toc-title">Contents</div>`;
+  sections.forEach((s, i) => { tocInner += `<a href="#${s.id}" data-target="${s.id}">${i+1}. ${s.label}</a>`; });
+  tocEl.innerHTML = tocInner;
+  document.body.appendChild(tocEl);
+
+  // Smooth scroll
+  tocEl.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    if (!link) return;
+    e.preventDefault();
+    const target = document.getElementById(link.dataset.target);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // Highlight active TOC link on scroll
+  const tocLinks = tocEl.querySelectorAll('a[data-target]');
+  function updateActiveToc() {
+    let currentId = '';
+    for (const s of sections) {
+      const el = document.getElementById(s.id);
+      if (el && el.getBoundingClientRect().top <= 120) currentId = s.id;
+    }
+    tocLinks.forEach(a => a.classList.toggle('active', a.dataset.target === currentId));
+  }
+  window.addEventListener('scroll', updateActiveToc, { passive: true });
+  updateActiveToc();
 
   // Render each section
   renderCategorizedSection(doc, 1, 'tools', 'Tools',
@@ -544,16 +596,19 @@ function cleanupEmptySections() {
   document.querySelectorAll('.section-block').forEach(block => {
     if (!block.querySelector('.item-row')) block.remove();
   });
-  // Update TOC: remove links to sections that no longer exist
-  document.querySelectorAll('.toc a').forEach(link => {
-    const targetId = link.getAttribute('href')?.replace('#', '');
+  // Update TOC: hide links to sections that no longer exist, show them if they do
+  document.querySelectorAll('.toc a[data-target]').forEach(link => {
+    const targetId = link.dataset.target;
     if (targetId && !document.getElementById(targetId)) {
-      link.remove();
+      link.style.display = 'none';
     }
   });
-  // If TOC is empty, remove it entirely
+  // If all TOC links are hidden, hide entire TOC
   const toc = document.querySelector('.toc');
-  if (toc && !toc.querySelector('a')) toc.remove();
+  if (toc) {
+    const visibleLinks = toc.querySelectorAll('a[data-target]:not([style*="display: none"])');
+    toc.style.display = visibleLinks.length ? '' : 'none';
+  }
 }
 
 // ══════════════ FILE PICKER FALLBACK ══════════════
